@@ -1,37 +1,410 @@
-# Local .terraform directories
-.terraform/
+# .gitignore - IoT Predictive Maintenance Project
 
-# .tfstate files
+# ============================================================================
+# TERRAFORM
+# ============================================================================
+
+# Terraform state files
 *.tfstate
 *.tfstate.*
+*.tfstate.backup
+.terraform.tfstate.lock.info
 
-# Crash log files
-crash.log
-crash.*.log
+# Terraform directory
+.terraform/
+.terraform.lock.hcl
 
-# Exclude all .tfvars files, which are likely to contain sensitive data, such as
-# password, private keys, and other secrets. These should not be part of version 
-# control as they are data points which are potentially sensitive and subject 
-# to change depending on the environment.
+# Terraform variable files (may contain secrets)
 *.tfvars
-*.tfvars.json
+!terraform.tfvars.example
+*.auto.tfvars
+*.auto.tfvars.json
 
-# Ignore override files as they are usually used to override resources locally and so
-# are not checked in
+# Terraform override files
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Ignore transient lock info files created by terraform apply
-.terraform.tfstate.lock.info
-
-# Include override files you do wish to add to version control using negated pattern
-# !example_override.tf
-
-# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-# example: *tfplan*
-
-# Ignore CLI configuration files
+# Terraform CLI configuration
 .terraformrc
 terraform.rc
+
+# Crash log files
+crash.log
+crash.*.log
+
+# ============================================================================
+# AWS
+# ============================================================================
+
+# AWS credentials
+.aws/
+*.pem
+*.key
+*.crt
+
+# AWS certificates (IoT Core)
+applications/iot-simulator/certificates/*
+!applications/iot-simulator/certificates/.gitkeep
+
+# ============================================================================
+# KUBERNETES
+# ============================================================================
+
+# Kubeconfig files
+kubeconfig
+kubeconfig.*
+*.kubeconfig
+.kube/
+
+# Kubernetes secrets
+*secret*.yaml
+*secrets*.yaml
+
+# Helm
+.helm/
+*.tgz
+
+# ============================================================================
+# DOCKER
+# ============================================================================
+
+# Docker files
+docker-compose.override.yml
+.dockerignore
+
+# ============================================================================
+# NODE.JS / JAVASCRIPT / TYPESCRIPT
+# ============================================================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Package manager lock files (keep one, ignore others)
+# yarn.lock
+# pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+
+# IDEs and editors
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ============================================================================
+# PYTHON
+# ============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# pyenv
+.python-version
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# ============================================================================
+# JAVA / SPRING BOOT
+# ============================================================================
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# IntelliJ IDEA
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# ============================================================================
+# LOGS
+# ============================================================================
+
+# Log files
+*.log
+logs/
+*.log.*
+
+# ============================================================================
+# MONITORING / OBSERVABILITY
+# ============================================================================
+
+# Prometheus
+prometheus/data/
+
+# Grafana
+grafana/data/
+
+# ============================================================================
+# CLOUD PROVIDERS
+# ============================================================================
+
+# Azure
+.azure/
+
+# GCP
+.gcloud/
+*-service-account.json
+*.json.enc
+
+# Oracle Cloud
+.oci/
+
+# ============================================================================
+# CI/CD
+# ============================================================================
+
+# GitHub Actions
+.github/workflows/*.secrets
+
+# GitLab CI
+.gitlab-ci-local/
+
+# ============================================================================
+# OPERATING SYSTEM
+# ============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ============================================================================
+# TEMPORARY FILES
+# ============================================================================
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# ============================================================================
+# SECRETS & CREDENTIALS (CRITICAL!)
+# ============================================================================
+
+# Generic secrets
+secrets/
+*secret*
+*Secret*
+*SECRET*
+credentials/
+*credentials*
+*Credentials*
+*CREDENTIALS*
+
+# API Keys
+*api-key*
+*apikey*
+*api_key*
+
+# Passwords
+*password*
+*passwd*
+
+# Tokens
+*token*
+*bearer*
+
+# Private keys
+*.key
+*.pem
+*.p12
+*.pfx
+
+# SSL/TLS certificates
+*.crt
+*.cer
+*.der
+
+# SSH keys
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# ============================================================================
+# PROJECT SPECIFIC
+# ============================================================================
+
+# Scripts output
+scripts/output/
+
+# Backup files
+backup/
+backups/
+*.backup
+
+# Documentation builds
+docs/_build/
+site/
+
+# Test outputs
+test-results/
+coverage/
+
+# Local configuration
+local/
+*.local
+
+# Database dumps
+*.sql
+*.dump
+
+# ============================================================================
+# KEEP THESE FILES
+# ============================================================================
+
+# Keep example files
+!*.example
+!*.sample
+!.gitkeep
+
+# Keep specific configuration templates
+!docker-compose.yml
+!Makefile
+!README.md
