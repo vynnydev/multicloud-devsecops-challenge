@@ -1,0 +1,109 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="DR-Oracle" id="dr-oracle">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="600">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="dr-oci-title" value="DISASTER RECOVERY - ORACLE CLOUD" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C62828;strokeColor=#B71C1C;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- ORACLE PRIMARY -->
+        <mxCell id="oci-primary-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBE9E7;strokeColor=#C62828;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="70" y="120" width="500" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-p-title" value="ORACLE PRIMARY REGION&#xa;us-ashburn-1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#C62828;" vertex="1" parent="1">
+          <mxGeometry x="90" y="135" width="250" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="badge-prod-oci" value="🟢 PRODUCTION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="90" y="185" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Components -->
+        <mxCell id="oci-p-oke" value="OKE Cluster&#xa;Microservices: 4&#xa;Pods: 12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-p-adb" value="Autonomous DB&#xa;Self-Driving&#xa;200GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-p-mysql" value="MySQL&#xa;HeatWave&#xa;Analytics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-p-object" value="Object Storage&#xa;Standard Tier&#xa;60TB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-backup-info" value="📦 BACKUP: Data Guard (Sync) | Auto-Backup (Daily) | Block Volume Snapshots" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="325" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-metrics" value="RTO: 18 min | RPO: 1 min | SLA: 99.995%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="360" width="460" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- ORACLE DR -->
+        <mxCell id="oci-dr-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=3;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="120" width="500" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-dr-title" value="ORACLE DR REGION&#xa;us-phoenix-1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#7B1FA2;" vertex="1" parent="1">
+          <mxGeometry x="670" y="135" width="250" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="badge-warm-oci" value="🟡 WARM STANDBY" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFA726;strokeColor=#E65100;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="670" y="185" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- DR Components -->
+        <mxCell id="oci-dr-oke" value="OKE Standby&#xa;Nodes: 1 (Min)&#xa;Auto-Scale" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#512DA8;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-dr-adb" value="ADB Replica&#xa;Data Guard&#xa;Standby" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#512DA8;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-dr-object" value="Object Replica&#xa;Cross-Region&#xa;Sync" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#512DA8;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-dr-automation" value="Resource Mgr&#xa;Terraform&#xa;Auto-Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#512DA8;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-recovery" value="⚡ RECOVERY: Monitoring → Data Guard Failover → Scale OKE → Deploy Apps → DNS Update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="325" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oci-cost" value="💰 CUSTO STANDBY: ~$700/mês | FAILOVER: Automático (3-5 min)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="360" width="460" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- Replication Arrow -->
+        <mxCell id="seta-replication-oci" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;strokeColor=#C62828;fillColor=#FFCDD2;strokeWidth=2;width=20;endSize=8;startSize=8;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="570" y="260" as="sourcePoint" />
+            <mxPoint x="650" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-replication-oci" value="Data Guard&#xa;Real-Time" style="text;html=1;strokeColor=#C62828;fillColor=#FFEBEE;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="575" y="280" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Instructions -->
+        <mxCell id="info-oci-dr" value="📍 DR ORACLE - ÚLTIMA CLOUD!&#xa;&#xa;ONDE: Abaixo do DR GCP (completando as 4 clouds)&#xa;ORDEM FINAL: DR AWS → DR Azure → DR GCP → DR Oracle&#xa;&#xa;DIFERENCIAIS ORACLE:&#xa;• Autonomous Database com Data Guard (replicação automática)&#xa;• RTO de 18 min (segundo melhor, perdendo só para Azure)&#xa;• RPO de 1 min (excelente para dados críticos)&#xa;• SLA 99.995% (o MELHOR entre todas as clouds!)&#xa;• Warm Standby (balanceado entre custo e performance)&#xa;&#xa;🎯 DESTAQUE NO NEXT: Oracle tem o SLA MAIS ALTO!" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBE9E7;strokeColor=#C62828;align=left;verticalAlign=top;fontSize=10;fontStyle=1;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="440" width="1080" height="130" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

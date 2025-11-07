@@ -1,0 +1,138 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Quad-Cloud-Connections" id="quad-connections">
+    <mxGraphModel dx="1800" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title-connections" value="INTEGRAÇÃO QUAD-CLOUD: AWS + Azure + GCP + Oracle" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#263238;strokeColor=#000000;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1300" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- AWS Box -->
+        <mxCell id="aws-box" value="AWS&#xa;us-east-1&#xa;Direct Connect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="180" width="180" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Azure Box -->
+        <mxCell id="azure-box" value="AZURE&#xa;East US&#xa;ExpressRoute" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="180" width="180" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- GCP Box -->
+        <mxCell id="gcp-box" value="GCP&#xa;us-central1&#xa;Interconnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="550" width="180" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Oracle Box -->
+        <mxCell id="oracle-box" value="ORACLE&#xa;us-ashburn-1&#xa;FastConnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="550" width="180" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Central Hub -->
+        <mxCell id="central-hub" value="MULTI-CLOUD&#xa;INTEGRATION HUB&#xa;&#xa;Bandwidth: 10 Gbps&#xa;Encryption: mTLS&#xa;Latency: &lt; 5ms" style="ellipse;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#6A1B9A;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="550" y="350" width="300" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- AWS → Azure -->
+        <mxCell id="conn-aws-azure" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#FF6B6B;strokeWidth=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="aws-box" target="azure-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="450" as="sourcePoint" />
+            <mxPoint x="650" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-aws-azure" value="Direct Connect + ExpressRoute&#xa;10 Gbps | IPsec + mTLS&#xa;Use: Data Sync, ML Training" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#C62828;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="530" y="190" width="240" height="65" as="geometry" />
+        </mxCell>
+        
+        <!-- AWS → GCP -->
+        <mxCell id="conn-aws-gcp" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=4;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aws-box" target="gcp-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="450" as="sourcePoint" />
+            <mxPoint x="650" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-aws-gcp" value="Direct Connect + Interconnect&#xa;10 Gbps | IPsec VPN&#xa;Use: IoT Data → BigQuery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="90" y="370" width="200" height="65" as="geometry" />
+        </mxCell>
+        
+        <!-- AWS → Oracle -->
+        <mxCell id="conn-aws-oracle" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#FF9800;strokeWidth=4;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aws-box" target="oracle-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="450" as="sourcePoint" />
+            <mxPoint x="650" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-aws-oracle" value="Direct Connect + FastConnect&#xa;10 Gbps | TLS 1.3&#xa;Use: Transactional Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="530" y="320" width="220" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Azure → GCP -->
+        <mxCell id="conn-azure-gcp" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#9C27B0;strokeWidth=4;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="azure-box" target="gcp-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="450" as="sourcePoint" />
+            <mxPoint x="650" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-azure-gcp" value="ExpressRoute + Interconnect&#xa;10 Gbps | TLS 1.3&#xa;Use: ML Models → Vertex AI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="530" y="480" width="220" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Azure → Oracle -->
+        <mxCell id="conn-azure-oracle" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#2196F3;strokeWidth=4;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="azure-box" target="oracle-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="450" as="sourcePoint" />
+            <mxPoint x="650" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-azure-oracle" value="ExpressRoute + FastConnect&#xa;10 Gbps | mTLS&#xa;Use: AI Results → Oracle DB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="370" width="200" height="65" as="geometry" />
+        </mxCell>
+        
+        <!-- GCP → Oracle -->
+        <mxCell id="conn-gcp-oracle" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#FF5722;strokeWidth=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gcp-box" target="oracle-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="450" as="sourcePoint" />
+            <mxPoint x="650" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-gcp-oracle" value="Interconnect + FastConnect&#xa;10 Gbps | IPsec + mTLS&#xa;Use: Analytics → Oracle DW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#C62828;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="530" y="570" width="240" height="65" as="geometry" />
+        </mxCell>
+        
+        <!-- Data Flow Examples -->
+        <mxCell id="flow-title" value="📊 EXEMPLOS DE FLUXOS DE DADOS QUAD-CLOUD" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50" y="720" width="1300" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Flow 1 -->
+        <mxCell id="flow-1" value="🔸 FLUXO 1: IoT Pipeline Completo&#xa;&#xa;Sensores IoT → AWS IoT Core → Kinesis → S3&#xa;  → Oracle Autonomous DB (Transactional)&#xa;  → GCP BigQuery (Analytics)&#xa;  → Azure ML (AI Training)&#xa;  → Predições retornam para Oracle" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="790" width="400" height="130" as="geometry" />
+        </mxCell>
+        
+        <!-- Flow 2 -->
+        <mxCell id="flow-2" value="🔸 FLUXO 2: AI/ML Cross-Cloud&#xa;&#xa;AWS: Data Collection (S3)&#xa;  → Azure ML: Model Training&#xa;  → GCP Vertex AI: Production Deploy&#xa;  → Oracle: Store Predictions&#xa;  → Azure Analytics: Dashboards" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=10;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="790" width="400" height="130" as="geometry" />
+        </mxCell>
+        
+        <!-- Flow 3 -->
+        <mxCell id="flow-3" value="🔸 FLUXO 3: Enterprise Data Warehouse&#xa;&#xa;Oracle: Transactional Data (Real-time)&#xa;  → GCP BigQuery: Data Warehouse&#xa;  → Azure Synapse: Advanced Analytics&#xa;  → AWS S3: Long-term Archive&#xa;  → Oracle Analytics: Executive Reports" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBE9E7;strokeColor=#D84315;fontSize=10;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="930" y="790" width="400" height="130" as="geometry" />
+        </mxCell>
+        
+        <!-- Instructions -->
+        <mxCell id="instructions" value="📍 INSTRUÇÕES DE IMPLEMENTAÇÃO:&#xa;&#xa;1. ONDE COLOCAR: Crie uma nova página no Draw.io chamada 'Integrações' ou adicione ao final do diagrama principal&#xa;2. SUBSTITUI: A imagem 4 atual (que só tem 3 clouds)&#xa;3. MELHORIAS: Agora tem ORACLE integrada com todas as outras clouds!&#xa;&#xa;🔗 CONEXÕES QUAD-CLOUD:&#xa;• 6 conexões totais (AWS↔Azure, AWS↔GCP, AWS↔Oracle, Azure↔GCP, Azure↔Oracle, GCP↔Oracle)&#xa;• Todas com 10 Gbps de bandwidth&#xa;• Todas com criptografia (mTLS, IPsec, TLS 1.3)&#xa;• Latência &lt; 5ms em todas as conexões&#xa;&#xa;🎯 DESTAQUE NO NEXT:&#xa;• Único projeto com 4 clouds integradas&#xa;• Oracle vai ADORAR ver isso!&#xa;• Demonstra domínio de arquitetura multi-cloud complexa" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;align=left;verticalAlign=top;fontSize=10;fontStyle=1;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="950" width="1260" height="180" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,109 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="DR-GCP" id="dr-gcp">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="600">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="dr-gcp-title" value="DISASTER RECOVERY - GCP" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#34A853;strokeColor=#188038;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- GCP PRIMARY -->
+        <mxCell id="gcp-primary-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#34A853;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="70" y="120" width="500" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-p-title" value="GCP PRIMARY REGION&#xa;us-central1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="90" y="135" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="badge-prod-gcp" value="🟢 PRODUCTION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="90" y="185" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Components -->
+        <mxCell id="gcp-p-gke" value="GKE Cluster&#xa;Microservices: 4&#xa;Pods: 14" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#2E7D32;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-p-sql" value="Cloud SQL&#xa;Regional HA&#xa;180GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#2E7D32;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-p-firestore" value="Firestore&#xa;Multi-Region&#xa;Real-Time" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#2E7D32;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-p-storage" value="Cloud Storage&#xa;Multi-Regional&#xa;75TB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#2E7D32;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-backup-info" value="📦 BACKUP: Snapshots (4x/dia) | Cloud SQL Auto-Backup | Lifecycle Policy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="325" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-metrics" value="RTO: 25 min | RPO: 5 min | SLA: 99.95%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="360" width="460" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- GCP DR -->
+        <mxCell id="gcp-dr-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFA726;strokeWidth=3;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="120" width="500" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-dr-title" value="GCP DR REGION&#xa;europe-west1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#E65100;" vertex="1" parent="1">
+          <mxGeometry x="670" y="135" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="badge-cold" value="⚪ COLD STANDBY (On-Demand)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF7043;strokeColor=#BF360C;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="670" y="185" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- DR Components -->
+        <mxCell id="gcp-dr-gke" value="GKE Standby&#xa;Nodes: 0 (Cold)&#xa;Terraform Ready" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-dr-sql" value="SQL Backup&#xa;Point-in-Time&#xa;7 days" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-dr-storage" value="Storage Replica&#xa;Multi-Region&#xa;Auto-Sync" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-dr-functions" value="Cloud Functions&#xa;DR Automation&#xa;Terraform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-recovery" value="⚡ RECOVERY: Manual/Auto → Cloud Function → Terraform Create → Restore SQL → Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="325" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gcp-cost" value="💰 CUSTO STANDBY: ~$200/mês | ATIVAÇÃO: 15-20 min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="360" width="460" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- Replication Arrow -->
+        <mxCell id="seta-backup-gcp" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;strokeColor=#66BB6A;fillColor=#C8E6C9;strokeWidth=2;width=20;endSize=8;startSize=8;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="570" y="260" as="sourcePoint" />
+            <mxPoint x="650" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-backup-gcp" value="Backup&#xa;Scheduled" style="text;html=1;strokeColor=#388E3C;fillColor=#E8F5E9;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="280" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Instructions -->
+        <mxCell id="info-gcp-dr" value="📍 DR GCP - ADICIONE ESTE XML&#xa;&#xa;ONDE: Abaixo do DR Azure (que você já tem)&#xa;ORDEM: DR AWS → DR Azure → DR GCP → DR Oracle&#xa;&#xa;DIFERENCIAL GCP:&#xa;• Cold Standby (mais econômico)&#xa;• Ativação sob demanda (15-20 min)&#xa;• Cloud Functions para automação&#xa;• Terraform provisiona tudo automaticamente" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;align=left;verticalAlign=top;fontSize=10;fontStyle=1;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="440" width="1080" height="110" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

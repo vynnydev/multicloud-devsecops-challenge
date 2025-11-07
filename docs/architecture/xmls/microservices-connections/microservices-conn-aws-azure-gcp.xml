@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram id="internal-connections" name="Internal Microservices Connections">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- ========== FLUXOS INTERNOS AWS ========== -->
+        
+        <mxCell id="title-aws-flows" value="☁️ FLUXOS INTERNOS - AWS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9900;strokeColor=#FF6600;strokeWidth=2;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="350" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Fluxo 1: IoT → Stream Processing -->
+        <mxCell id="aws-flow-1" value="1️⃣ IoT Ingestion Service → Stream Processing&#xa;&#xa;Protocolo: MQTT/HTTPS&#xa;Message Broker: AWS IoT Core&#xa;Stream: Kinesis Data Streams&#xa;Formato: JSON/Avro&#xa;Rate: 100k msgs/sec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE5B4;strokeColor=#FF9900;align=left;verticalAlign=top;fontStyle=1;fontSize=9;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="110" width="350" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Seta representativa -->
+        <mxCell id="arrow-aws-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF9900;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="145" as="sourcePoint" />
+            <mxPoint x="150" y="145" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Fluxo 2: Stream → Data Lake -->
+        <mxCell id="aws-flow-2" value="2️⃣ Stream Processing → Data Lake Service&#xa;&#xa;Protocolo: S3 API (HTTPS)&#xa;ETL: AWS Glue&#xa;Storage: S3 (Parquet/ORC format)&#xa;Partitioning: Por data/hora&#xa;Compression: Snappy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE5B4;strokeColor=#FF9900;align=left;verticalAlign=top;fontStyle=1;fontSize=9;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="220" width="350" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-aws-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF9900;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="255" as="sourcePoint" />
+            <mxPoint x="150" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Fluxo 3: Data Lake → Notification -->
+        <mxCell id="aws-flow-3" value="3️⃣ Data Lake Service → Notification Service&#xa;&#xa;Trigger: S3 Event Notifications&#xa;Queue: SQS (DLQ enabled)&#xa;Lambda: Processing functions&#xa;Channels: SNS → Slack/Teams/Email&#xa;Priority: High/Medium/Low queues" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE5B4;strokeColor=#FF9900;align=left;verticalAlign=top;fontStyle=1;fontSize=9;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="330" width="350" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-aws-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF9900;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="365" as="sourcePoint" />
+            <mxPoint x="150" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========== FLUXOS INTERNOS AZURE ========== -->
+        
+        <mxCell id="title-azure-flows" value="☁️ FLUXOS INTERNOS - AZURE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0078D4;strokeColor=#005A9E;strokeWidth=2;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="450" y="50" width="350" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Fluxo 1: ML Training → AI Prediction -->
+        <mxCell id="azure-flow-1" value="1️⃣ ML Training Service → AI Prediction Service&#xa;&#xa;Protocolo: gRPC + REST API&#xa;Model Registry: Azure ML Workspace&#xa;Format: ONNX/TensorFlow SavedModel&#xa;Deployment: AKS + Azure ML Online Endpoints&#xa;Versioning: Semantic versioning (v1.0.0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCE5FF;strokeColor=#0078D4;align=left;verticalAlign=top;fontStyle=1;fontSize=9;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="450" y="110" width="350" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-azure-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="145" as="sourcePoint" />
+            <mxPoint x="550" y="145" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Fluxo 2: AI Prediction → Analytics -->
+        <mxCell id="azure-flow-2" value="2️⃣ AI Prediction Service → Analytics Service&#xa;&#xa;Protocolo: Event Hubs (Kafka compatible)&#xa;Data Lake: Synapse Analytics&#xa;Processing: Spark pools&#xa;Viz: Power BI embedded&#xa;Refresh: Near real-time (30 sec)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCE5FF;strokeColor=#0078D4;align=left;verticalAlign=top;fontStyle=1;fontSize=9;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="450" y="220" width="350" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-azure-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="255" as="sourcePoint" />
+            <mxPoint x="550" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Fluxo 3: Analytics → Monitoring -->
+        <mxCell id="azure-flow-3" value="3️⃣ Analytics Service → Monitoring Service&#xa;&#xa;Protocolo: HTTPS (REST)&#xa;Metrics: Azure Monitor custom metrics&#xa;Logs: Log Analytics Workspace&#xa;Alerts: Action Groups (webhook/email)&#xa;Dashboards: Azure Monitor Workbooks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCE5FF;strokeColor=#0078D4;align=left;verticalAlign=top;fontStyle=1;fontSize=9;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="450" y="330" width="350" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-azure-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="365" as="sourcePoint" />
+            <mxPoint x="550" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========== FLUXOS INTERNOS GCP ========== -->
+        
+        <mxCell id="title-gcp-flows" value="☁️ FLUXOS INTERNOS - GCP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#34A853;strokeColor=#188038;strokeWidth=2;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50" y="460" width="750" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Fluxo 1: BigQuery → Vertex AI -->
+        <mxCell id="gcp-flow-1" value="1️⃣ BigQuery Service → Vertex AI Service&#xa;&#xa;Protocolo: BigQuery Storage API&#xa;Training Data: BigQuery ML&#xa;Model: AutoML / Custom Training&#xa;Infrastructure: Vertex AI Training (GPUs)&#xa;Pipeline: Kubeflow Pipelines" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D4F1D4;strokeColor=#34A853;align=left;verticalAlign=top;fontStyle=1;fontSize=9;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="520" width="350" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-gcp-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#34A853;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="555" as="sourcePoint" />
+            <mxPoint x="150" y="555" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Fluxo 2: Vertex AI → Data Processing -->
+        <mxCell id="gcp-flow-2" value="2️⃣ Vertex AI Service → Data Processing&#xa;&#xa;Protocolo: Pub/Sub (async messaging)&#xa;Processing: Dataflow (Apache Beam)&#xa;Transform: ETL + Feature Engineering&#xa;Output: BigQuery + Cloud Storage&#xa;Streaming: Real-time / Batch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D4F1D4;strokeColor=#34A853;align=left;verticalAlign=top;fontStyle=1;fontSize=9;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="450" y="520" width="350" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-gcp-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#34A853;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="555" as="sourcePoint" />
+            <mxPoint x="550" y="555" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Fluxo 3: Data Processing → Visualization -->
+        <mxCell id="gcp-flow-3" value="3️⃣ Data Processing → Visualization Service&#xa;&#xa;Protocolo: JDBC/ODBC (BigQuery connector)&#xa;Tools: Looker / Data Studio&#xa;Features: Interactive dashboards&#xa;Sharing: Embedded reports, scheduled emails&#xa;Refresh: Incremental (configurable)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D4F1D4;strokeColor=#34A853;align=left;verticalAlign=top;fontStyle=1;fontSize=9;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="630" width="750" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-gcp-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#34A853;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="665" as="sourcePoint" />
+            <mxPoint x="150" y="665" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========== INSTRUÇÕES ========== -->
+        
+        <mxCell id="instructions-internal" value="📍 COMO ADICIONAR AS SETAS INTERNAS NO DRAW.IO:&#xa;&#xa;PASSO A PASSO:&#xa;&#xa;1. AWS (Imagem 2):&#xa;   a) Desenhe seta laranja do &quot;IoT Ingestion Service&quot; → &quot;Stream Processing Service&quot;&#xa;   b) Desenhe seta laranja do &quot;Stream Processing&quot; → &quot;Data Lake Service&quot;&#xa;   c) Desenhe seta laranja do &quot;Data Lake Service&quot; → &quot;Notification Service&quot;&#xa;   • Estilo: Linha sólida, 3pt, cor #FF9900 (laranja AWS)&#xa;&#xa;2. AZURE (Imagem 3):&#xa;   a) Desenhe seta azul do &quot;ML Training Service&quot; → &quot;AI Prediction Service&quot;&#xa;   b) Desenhe seta azul do &quot;AI Prediction&quot; → &quot;Analytics Service&quot;&#xa;   c) Desenhe seta azul do &quot;Analytics Service&quot; → &quot;Monitoring Service&quot;&#xa;   • Estilo: Linha sólida, 3pt, cor #0078D4 (azul Azure)&#xa;&#xa;3. GCP (Imagem 4):&#xa;   a) Desenhe seta verde do &quot;BigQuery Service&quot; → &quot;Vertex AI Service&quot;&#xa;   b) Desenhe seta verde do &quot;Vertex AI&quot; → &quot;Data Processing Service&quot;&#xa;   c) Desenhe seta verde do &quot;Data Processing&quot; → &quot;Visualization Service&quot;&#xa;   • Estilo: Linha sólida, 3pt, cor #34A853 (verde GCP)&#xa;&#xa;DICAS:&#xa;• Use o conector &quot;Elbow&quot; ou &quot;Orthogonal&quot; para ângulos retos&#xa;• Adicione pequenos labels nas setas com o protocolo (ex: &quot;MQTT&quot;, &quot;gRPC&quot;, &quot;REST&quot;)&#xa;• Mantenha consistência de cores: AWS=Laranja, Azure=Azul, GCP=Verde" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#FF6F00;align=left;verticalAlign=top;fontStyle=1;fontSize=9;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="720" width="750" height="280" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

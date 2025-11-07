@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram id="fortinet-aws" name="FortiNet AWS">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- FortiGate VM no Public Subnet AWS -->
+        <mxCell id="fortigate-aws-1" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.shield;" vertex="1" parent="1">
+          <mxGeometry x="150" y="100" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <!-- Label FortiGate -->
+        <mxCell id="fortigate-aws-label" value="FortiGate VM&#xa;Next-Gen Firewall&#xa;+ IPS/IDS" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="139" y="185" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- FortiWeb WAF -->
+        <mxCell id="fortiweb-aws-1" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.waf;" vertex="1" parent="1">
+          <mxGeometry x="290" y="100" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- Label FortiWeb -->
+        <mxCell id="fortiweb-aws-label" value="FortiWeb WAF&#xa;Web Application&#xa;Firewall" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="279" y="185" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- FortiManager -->
+        <mxCell id="fortimanager-aws-1" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.control_tower;" vertex="1" parent="1">
+          <mxGeometry x="430" y="100" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- Label FortiManager -->
+        <mxCell id="fortimanager-aws-label" value="FortiManager&#xa;Centralized&#xa;Management" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="419" y="185" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Conexão entre FortiGate e FortiWeb -->
+        <mxCell id="connection-fg-fw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C7131F;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="fortigate-aws-1" target="fortiweb-aws-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Conexão entre FortiWeb e FortiManager -->
+        <mxCell id="connection-fw-fm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#116D5B;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="fortiweb-aws-1" target="fortimanager-aws-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Instruções de Posicionamento -->
+        <mxCell id="instructions-aws" value="📍 ONDE COLOCAR NO DRAW.IO:&#xa;&#xa;1. Abra o diagrama AWS (Imagem 2)&#xa;2. Localize o &quot;Public Subnet A&quot; (retângulo azul claro)&#xa;3. Adicione estes 3 componentes DENTRO do Public Subnet&#xa;4. Posicione ANTES do ALB e API Gateway&#xa;&#xa;ORDEM DO FLUXO:&#xa;Internet → FortiGate VM → FortiWeb WAF → ALB/API Gateway&#xa;&#xa;FortiManager: Pode ficar em uma área separada (fora das AZs)&#xa;para gerenciar todos os FortiGate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;fontStyle=1;fontSize=10;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="280" width="450" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Configurações -->
+        <mxCell id="config-aws" value="⚙️ CONFIGURAÇÕES FORTINET AWS:&#xa;&#xa;FortiGate VM:&#xa;• Instance Type: c5.xlarge (4 vCPU, 8GB RAM)&#xa;• ENIs: 2 interfaces (Management + Data)&#xa;• Security Groups: Allow 443, 8443, SSH&#xa;• Features: IPS, IDS, SSL Inspection, VPN&#xa;&#xa;FortiWeb WAF:&#xa;• Instance Type: c5.large&#xa;• Protection: OWASP Top 10, API Security&#xa;• SSL Offloading: Enabled&#xa;&#xa;FortiManager:&#xa;• Instance Type: t3.medium&#xa;• Purpose: Central policy management&#xa;• Multi-cloud capable" style="rounded=1;whiteConnect=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;fontStyle=0;fontSize=9;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="480" width="450" height="180" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

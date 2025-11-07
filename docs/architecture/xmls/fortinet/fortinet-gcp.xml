@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Fortinet-GCP-Resources" id="fortinet-gcp">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- ========================================= -->
+        <!-- FORTINET RESOURCES FOR GCP -->
+        <!-- ========================================= -->
+        
+        <!-- FortiGate VM - Next-Gen Firewall (IPS/IDS) -->
+        <mxCell id="fortigate-vm-gcp" value="" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=#d79b00;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#ffe6cc;shape=mxgraph.mscae.enterprise.firewall" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fortigate-label" value="&lt;b&gt;FortiGate VM&lt;/b&gt;&lt;br&gt;Next-Gen Firewall&lt;br&gt;IPS/IDS" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="160" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- FortiWeb WAF - Web Application Firewall -->
+        <mxCell id="fortiweb-waf-gcp" value="" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=#d79b00;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#ffe6cc;shape=mxgraph.azure.website_generic" vertex="1" parent="1">
+          <mxGeometry x="240" y="80" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fortiweb-label" value="&lt;b&gt;FortiWeb WAF&lt;/b&gt;&lt;br&gt;Web Application&lt;br&gt;Firewall" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="220" y="160" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- FortiManager - Policy Management -->
+        <mxCell id="fortimanager-gcp" value="" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=#d79b00;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#fff2cc;shape=mxgraph.mscae.enterprise.settings" vertex="1" parent="1">
+          <mxGeometry x="400" y="80" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fortimanager-label" value="&lt;b&gt;FortiManager&lt;/b&gt;&lt;br&gt;Policy Management" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="380" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Traffic Flow Arrow: FortiGate -> FortiWeb -->
+        <mxCell id="flow-fortigate-fortiweb" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#d79b00;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fortigate-vm-gcp" target="fortiweb-waf-gcp">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="115" as="sourcePoint" />
+            <mxPoint x="230" y="65" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Management Connection: FortiManager dashed lines -->
+        <mxCell id="mgmt-fortigate" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FFB366;strokeWidth=2;dashed=1;dashPattern=5 5;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="fortigate-vm-gcp" target="fortimanager-gcp">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="60" as="sourcePoint" />
+            <mxPoint x="440" y="60" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="120" y="40" />
+              <mxPoint x="440" y="40" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mgmt-fortiweb" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FFB366;strokeWidth=2;dashed=1;dashPattern=5 5;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="fortiweb-waf-gcp" target="fortimanager-gcp">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="60" as="sourcePoint" />
+            <mxPoint x="440" y="60" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="40" />
+              <mxPoint x="440" y="40" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Legend Box -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;dashPattern=3 3;" vertex="1" parent="1">
+          <mxGeometry x="60" y="260" width="480" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-title" value="&lt;b&gt;📋 LEGENDA - FORTINET RESOURCES&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#000000;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="270" width="200" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Legend Items -->
+        <mxCell id="legend-item1" value="🔷 &lt;b&gt;FortiGate VM:&lt;/b&gt; Firewall de próxima geração com IPS/IDS integrado&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• Localização: Public Subnet (10.2.1.0/24)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• Função: First line of defense, inspeciona todo tráfego entrante" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="70" y="305" width="460" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-item2" value="🔷 &lt;b&gt;FortiWeb WAF:&lt;/b&gt; Web Application Firewall para proteção Layer 7&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• Localização: Public Subnet (10.2.1.0/24)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• Função: Proteção OWASP Top 10, filtragem HTTP/HTTPS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="70" y="345" width="460" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-item3" value="🔷 &lt;b&gt;FortiManager:&lt;/b&gt; Gerenciamento centralizado de políticas Fortinet&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• Localização: Management Subnet (10.2.4.0/24) ou Private&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• Função: Configuração, logging e compliance" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="70" y="385" width="460" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Traffic Flow Sequence -->
+        <mxCell id="sequence-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="440" width="480" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sequence-title" value="&lt;b&gt;🔄 SEQUÊNCIA DO FLUXO DE TRÁFEGO&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#000000;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="180" y="450" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sequence-flow" value="Internet → Global Load Balancer → &lt;b&gt;FortiGate VM&lt;/b&gt; → &lt;b&gt;FortiWeb WAF&lt;/b&gt; → Cloud Armor → API Gateway → GKE Cluster (Private)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="70" y="485" width="460" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Subnet Placement Guide -->
+        <mxCell id="placement-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="60" y="580" width="480" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-title" value="&lt;b&gt;📍 ONDE COLOCAR NO DRAW.IO&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#000000;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="190" y="590" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-public" value="✅ &lt;b&gt;Public Subnet (10.2.1.0/24):&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• FortiGate VM (primeiro componente após Load Balancer)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• FortiWeb WAF (segundo componente, após FortiGate)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="70" y="625" width="460" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-mgmt" value="✅ &lt;b&gt;Management Subnet (10.2.4.0/24):&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• FortiManager (isolado, apenas gerenciamento)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="70" y="665" width="460" height="25" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,131 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="Draw.io" version="22.0.0">
+  <diagram name="DR-Azure" id="dr-azure">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Título Principal -->
+        <mxCell id="titulo-dr-azure" value="DISASTER RECOVERY - AZURE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0078D4;strokeColor=#005A9E;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== AZURE PRIMARY REGION ========== -->
+        
+        <!-- Container Primary -->
+        <mxCell id="azure-primary-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#0078D4;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="70" y="120" width="500" height="280" as="geometry" />
+        </mxCell>
+        
+        <!-- Título Primary -->
+        <mxCell id="azure-primary-title" value="AZURE PRIMARY REGION&#xa;East US" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#01579B;" vertex="1" parent="1">
+          <mxGeometry x="90" y="135" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Badge Production -->
+        <mxCell id="badge-prod-az" value="🟢 PRODUCTION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="90" y="185" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- AKS -->
+        <mxCell id="azure-p-aks" value="AKS Cluster&#xa;Microservices: 4&#xa;Pods: 16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3E5FC;strokeColor=#0277BD;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Azure SQL -->
+        <mxCell id="azure-p-sql" value="Azure SQL&#xa;Geo-Replication&#xa;Size: 150GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3E5FC;strokeColor=#0277BD;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Cosmos DB -->
+        <mxCell id="azure-p-cosmos" value="Cosmos DB&#xa;Multi-Region&#xa;Consistency: Strong" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3E5FC;strokeColor=#0277BD;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Blob Storage -->
+        <mxCell id="azure-p-blob" value="Blob Storage&#xa;GRS Enabled&#xa;Size: 50TB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3E5FC;strokeColor=#0277BD;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Backup Info -->
+        <mxCell id="azure-backup-info" value="📦 BACKUP: Azure Site Recovery (Continuous) | SQL Backup (12h)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="325" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Métricas Primary -->
+        <mxCell id="azure-metrics" value="RTO: 15 min | RPO: 1 min | SLA: 99.99%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="360" width="460" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== AZURE DR REGION ========== -->
+        
+        <!-- Container DR -->
+        <mxCell id="azure-dr-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=3;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="120" width="500" height="280" as="geometry" />
+        </mxCell>
+        
+        <!-- Título DR -->
+        <mxCell id="azure-dr-title" value="AZURE DR REGION&#xa;West Europe" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#4A148C;" vertex="1" parent="1">
+          <mxGeometry x="670" y="135" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Badge Standby -->
+        <mxCell id="badge-standby-az" value="🟡 WARM STANDBY" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFA726;strokeColor=#E65100;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="670" y="185" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- AKS Standby -->
+        <mxCell id="azure-dr-aks" value="AKS Standby&#xa;Nodes: 2 (Min)&#xa;Auto-Scale: ON" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#512DA8;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- SQL Replica -->
+        <mxCell id="azure-dr-sql" value="SQL Replica&#xa;Read-Only&#xa;Failover Group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#512DA8;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Cosmos Replica -->
+        <mxCell id="azure-dr-cosmos" value="Cosmos Replica&#xa;Multi-Master&#xa;Auto-Failover" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#512DA8;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Automation -->
+        <mxCell id="azure-dr-automation" value="Automation&#xa;Runbooks&#xa;Logic Apps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#512DA8;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="235" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Recovery Steps -->
+        <mxCell id="azure-recovery" value="⚡ RECOVERY: Azure Monitor → Runbook → SQL Failover → Cosmos Activate → Scale AKS → Traffic Manager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="325" width="460" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Cost Info -->
+        <mxCell id="azure-cost" value="💰 CUSTO STANDBY: ~$900/mês | TESTE DR: Mensal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="360" width="460" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== SETA DE REPLICAÇÃO ========== -->
+        
+        <!-- Seta Replicação -->
+        <mxCell id="seta-replicacao-az" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;strokeColor=#2196F3;fillColor=#BBDEFB;strokeWidth=2;width=20;endSize=8;startSize=8;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="570" y="260" as="sourcePoint" />
+            <mxPoint x="650" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Label Replicação -->
+        <mxCell id="label-replicacao-az" value="Replicação&#xa;Contínua" style="text;html=1;strokeColor=#1976D2;fillColor=#E3F2FD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="280" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== INSTRUÇÕES ========== -->
+        
+        <mxCell id="instrucoes-az" value="📍 INSTRUÇÕES:&#xa;&#xa;1. Copie este XML e salve como 'dr-azure.xml'&#xa;2. No Draw.io: File → Import → From Device → Selecione o arquivo&#xa;3. Posicione ABAIXO do DR AWS que você acabou de criar&#xa;4. Deixe espaço de ~50px entre AWS DR e Azure DR&#xa;&#xa;DESTAQUE AZURE:&#xa;• Azure Site Recovery = Replicação contínua automática&#xa;• SQL Failover Group = Failover automático de banco&#xa;• Cosmos Multi-Master = Write em múltiplas regiões&#xa;• RTO melhor que AWS (15min vs 20min)&#xa;&#xa;PRÓXIMO: Implementar DR do GCP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;align=left;verticalAlign=top;fontSize=10;fontStyle=0;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="440" width="1080" height="140" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
