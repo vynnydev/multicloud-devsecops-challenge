@@ -370,3 +370,8 @@ output "list_industry_url" {
 output "dynamodb_industry_table" {
   value = module.dynamodb_industry.table_name
 }
+
+output "delete_machine_url" {
+  description = "⭐ Endpoint para deletar máquina (DELETE)"
+  value       = "DELETE ${module.api_gateway.api_endpoint}/machines/{machine_id}"
+}

@@ -1,25 +1,19 @@
 import json
 import boto3
 from datetime import datetime
-import uuid
+import os
 
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-table = dynamodb.Table('industry-machines')  # Nova tabela
+
+# Pegar nome da tabela da variável de ambiente
+TABLE_NAME = os.environ.get('DYNAMODB_TABLE', 'iot-predictive-prod-industry-machines')
+table = dynamodb.Table(TABLE_NAME)
 
 def lambda_handler(event, context):
-    """
-    Cadastra uma máquina no inventário da indústria
+    """Cadastra uma máquina no inventário da indústria"""
     
-    Body:
-    {
-        "machine_id": "PUMP_001",
-        "machine_name": "Bomba Centrífuga",
-        "model": "BC-2500",
-        "location": "Zone 12",
-        "manufacturer": "Indústria Central",
-        "install_date": "2020-01-15"
-    }
-    """
+    print(f"📦 Event: {json.dumps(event)}")
+    print(f"🗄️ Table name: {TABLE_NAME}")
     
     try:
         body = json.loads(event.get('body', '{}'))
@@ -40,17 +34,16 @@ def lambda_handler(event, context):
             'machine_name': machine_name,
             'model': body.get('model', ''),
             'location': body.get('location', ''),
-            'manufacturer': body.get('manufacturer', ''),
-            'install_date': body.get('install_date', ''),
+            'manufacturer': body.get('manufacturer', 'Indústria Central'),
             'status': 'OPERATIONAL',
             'created_at': datetime.utcnow().isoformat() + 'Z',
             'updated_at': datetime.utcnow().isoformat() + 'Z'
         }
         
         # Salvar no DynamoDB
-        table.put_item(Item=machine)
-        
-        print(f"✅ Machine registered: {machine_id}")
+        print(f"💾 Salvando no DynamoDB: {json.dumps(machine)}")
+        response = table.put_item(Item=machine)
+        print(f"✅ DynamoDB response: {json.dumps(response, default=str)}")
         
         return {
             'statusCode': 201,
@@ -63,6 +56,9 @@ def lambda_handler(event, context):
         
     except Exception as e:
         print(f"❌ Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        
         return {
             'statusCode': 500,
             'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},

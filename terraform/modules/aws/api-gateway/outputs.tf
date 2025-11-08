@@ -21,3 +21,7 @@ output "register_machine_url" {
 output "list_industry_url" {
   value = "${aws_api_gateway_stage.prod.invoke_url}/machines/industry"
 }
+
+output "delete_machine_url" {
+  value = "${aws_api_gateway_stage.prod.invoke_url}/machines/{machine_id}"
+}

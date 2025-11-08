@@ -42,3 +42,11 @@ variable "lambda_list_industry_invoke_arn" {
 variable "lambda_list_industry_function_name" {
   type = string
 }
+
+variable "lambda_delete_invoke_arn" {
+  type = string
+}
+
+variable "lambda_delete_function_name" {
+  type = string
+}
