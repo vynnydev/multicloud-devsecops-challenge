@@ -32,3 +32,25 @@ output "s3_bucket_name" {
 output "sns_topic_arn" {
   value = module.sns.topic_arn
 }
+
+output "eks_cluster_name" {
+  value = module.eks.cluster_name
+}
+
+output "eks_cluster_endpoint" {
+  value = module.eks.cluster_endpoint
+}
+
+output "configure_kubectl" {
+  value = module.eks.kubeconfig_command
+}
+
+output "alb_dns_name" {
+  description = "⭐ URL do Load Balancer"
+  value       = module.alb.alb_dns_name
+}
+
+output "frontend_url" {
+  description = "⭐ Acesse o frontend aqui"
+  value       = "http://${module.alb.alb_dns_name}"
+}

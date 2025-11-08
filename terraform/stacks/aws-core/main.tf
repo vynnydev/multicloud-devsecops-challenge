@@ -37,25 +37,38 @@ module "iot" {
   depends_on = [module.kinesis, module.sns]
 }
 
-# RDS Aurora Module
-module "rds" {
-  source = "../../modules/aws/rds"
+# EKS Module
+module "eks" {
+  source = "../../modules/aws/eks"
 
-  project_name       = var.project_name
-  environment        = var.environment
-  vpc_id             = module.vpc.vpc_id
-  database_subnet_ids = module.vpc.database_subnet_ids
-  
-  # Vai precisar do EKS security group (adicionar depois)
-  # allowed_security_group_ids = [module.eks.node_security_group_id]
-  
-  instance_class   = "db.serverless"
-  master_username  = "postgres"
-  database_name    = "iot_predictive"
+  project_name        = var.project_name
+  environment         = var.environment
+  vpc_id              = module.vpc.vpc_id
+  private_subnet_ids  = module.vpc.private_subnet_ids
+  node_instance_type  = "t3.medium"
+  node_desired_size   = 2
+  node_min_size       = 2
+  node_max_size       = 3
 
   depends_on = [module.vpc]
 }
 
+# RDS Aurora Module
+module "rds" {
+  source = "../../modules/aws/rds"
+
+  project_name               = var.project_name
+  environment                = var.environment
+  vpc_id                     = module.vpc.vpc_id
+  database_subnet_ids        = module.vpc.database_subnet_ids
+  allowed_security_group_ids = [module.eks.node_security_group_id]  # ADICIONAR ISSO
+  
+  instance_class  = "db.t3.micro"
+  master_username = "postgres"
+  database_name   = "iot_predictive"
+
+  depends_on = [module.vpc, module.eks]
+}
 # S3 Module
 module "s3" {
   source       = "../../modules/aws/s3"
@@ -71,3 +84,13 @@ module "sns" {
   topic_name   = "iot-events"
 }
 
+module "alb" {
+  source = "../../modules/aws/alb"
+
+  project_name       = var.project_name
+  environment        = var.environment
+  vpc_id             = module.vpc.vpc_id
+  public_subnet_ids  = module.vpc.public_subnet_ids
+
+  depends_on = [module.vpc]
+}
