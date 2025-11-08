@@ -142,18 +142,58 @@ module "lambda_list_machines" {
   environment  = var.environment
 }
 
+# DynamoDB Industry Machines
+module "dynamodb_industry" {
+  source = "../../modules/aws/dynamodb-industry"
+
+  project_name = var.project_name
+  environment  = var.environment
+  table_name   = "industry-machines"
+}
+
+# Lambda Register Machine
+module "lambda_register_machine" {
+  source = "../../modules/aws/lambda-register-machine"
+
+  project_name        = var.project_name
+  environment         = var.environment
+  dynamodb_table_name = module.dynamodb_industry.table_name
+
+  depends_on = [module.dynamodb_industry]
+}
+
+# Lambda List Industry
+module "lambda_list_industry" {
+  source = "../../modules/aws/lambda-list-industry"
+
+  project_name        = var.project_name
+  environment         = var.environment
+  dynamodb_table_name = module.dynamodb_industry.table_name
+
+  depends_on = [module.dynamodb_industry]
+}
+
 # API Gateway Module
 module "api_gateway" {
   source = "../../modules/aws/api-gateway"
 
-  project_name                   = var.project_name
-  environment                    = var.environment
-  lambda_activate_invoke_arn     = module.lambda_activate.invoke_arn
-  lambda_activate_function_name  = module.lambda_activate.function_name
-  lambda_list_invoke_arn         = module.lambda_list_machines.invoke_arn
-  lambda_list_function_name      = module.lambda_list_machines.function_name
+  project_name                     = var.project_name
+  environment                      = var.environment
+  lambda_activate_invoke_arn       = module.lambda_activate.invoke_arn
+  lambda_activate_function_name    = module.lambda_activate.function_name
+  lambda_list_invoke_arn           = module.lambda_list_machines.invoke_arn
+  lambda_list_function_name        = module.lambda_list_machines.function_name
+  lambda_register_invoke_arn       = module.lambda_register_machine.invoke_arn
+  lambda_register_function_name    = module.lambda_register_machine.function_name
+  lambda_list_industry_invoke_arn  = module.lambda_list_industry.invoke_arn
+  lambda_list_industry_function_name = module.lambda_list_industry.function_name
 
-  depends_on = [module.lambda_activate, module.lambda_list_machines]
+  depends_on = [
+    module.lambda_activate,
+    module.lambda_list_machines,
+    module.lambda_register_machine,
+    module.lambda_list_industry
+  ]
 }
 
 # ECR Module

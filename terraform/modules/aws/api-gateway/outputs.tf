@@ -13,3 +13,11 @@ output "api_id" {
 output "list_machines_url" {
   value = "${aws_api_gateway_stage.prod.invoke_url}/machines"
 }
+
+output "register_machine_url" {
+  value = "${aws_api_gateway_stage.prod.invoke_url}/machines"
+}
+
+output "list_industry_url" {
+  value = "${aws_api_gateway_stage.prod.invoke_url}/machines/industry"
+}

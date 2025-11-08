@@ -356,3 +356,17 @@ output "list_machines_url" {
   description = "⭐ Endpoint para listar máquinas (GET)"
   value       = module.api_gateway.list_machines_url
 }
+
+output "register_machine_url" {
+  description = "⭐ Endpoint para cadastrar máquina (POST)"
+  value       = module.api_gateway.register_machine_url
+}
+
+output "list_industry_url" {
+  description = "⭐ Endpoint para listar máquinas da indústria (GET)"
+  value       = module.api_gateway.list_industry_url
+}
+
+output "dynamodb_industry_table" {
+  value = module.dynamodb_industry.table_name
+}

@@ -203,3 +203,71 @@ resource "aws_lambda_permission" "api_gateway_list" {
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*/*"
 }
+
+# ============================================================================
+# NOVAS ROTAS: /machines/industry
+# ============================================================================
+
+# Resource: /machines/industry
+resource "aws_api_gateway_resource" "industry" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  parent_id   = aws_api_gateway_resource.machines.id
+  path_part   = "industry"
+}
+
+# Method: GET /machines/industry
+resource "aws_api_gateway_method" "industry_get" {
+  rest_api_id   = aws_api_gateway_rest_api.main.id
+  resource_id   = aws_api_gateway_resource.industry.id
+  http_method   = "GET"
+  authorization = "NONE"
+}
+
+# Integration: Lambda List Industry
+resource "aws_api_gateway_integration" "industry_lambda" {
+  rest_api_id             = aws_api_gateway_rest_api.main.id
+  resource_id             = aws_api_gateway_resource.industry.id
+  http_method             = aws_api_gateway_method.industry_get.http_method
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = var.lambda_list_industry_invoke_arn
+}
+
+# ============================================================================
+# ATUALIZAR: POST /machines (cadastrar)
+# ============================================================================
+
+# Method: POST /machines
+resource "aws_api_gateway_method" "machines_post" {
+  rest_api_id   = aws_api_gateway_rest_api.main.id
+  resource_id   = aws_api_gateway_resource.machines.id
+  http_method   = "POST"
+  authorization = "NONE"
+}
+
+# Integration: Lambda Register
+resource "aws_api_gateway_integration" "machines_register" {
+  rest_api_id             = aws_api_gateway_rest_api.main.id
+  resource_id             = aws_api_gateway_resource.machines.id
+  http_method             = aws_api_gateway_method.machines_post.http_method
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = var.lambda_register_invoke_arn
+}
+
+# Lambda Permissions
+resource "aws_lambda_permission" "api_gateway_register" {
+  statement_id  = "AllowAPIGatewayInvokeRegister"
+  action        = "lambda:InvokeFunction"
+  function_name = var.lambda_register_function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*/*"
+}
+
+resource "aws_lambda_permission" "api_gateway_list_industry" {
+  statement_id  = "AllowAPIGatewayInvokeListIndustry"
+  action        = "lambda:InvokeFunction"
+  function_name = var.lambda_list_industry_function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*/*"
+}
