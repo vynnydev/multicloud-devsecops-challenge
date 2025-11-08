@@ -6,10 +6,9 @@ variable "environment" {
   type = string
 }
 
-variable "bucket_name_suffix" {
-  description = "Sufixo do bucket (será: project-env-suffix)"
-  type        = string
-  default     = "data-lake"
+variable "topic_name" {
+  type    = string
+  default = "iot-events"
 }
 
 variable "tags" {
