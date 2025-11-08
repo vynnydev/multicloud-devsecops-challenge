@@ -351,3 +351,8 @@ output "project_summary" {
     
   EOT
 }
+
+output "list_machines_url" {
+  description = "⭐ Endpoint para listar máquinas (GET)"
+  value       = module.api_gateway.list_machines_url
+}

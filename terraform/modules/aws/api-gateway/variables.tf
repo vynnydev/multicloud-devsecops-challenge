@@ -18,3 +18,11 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+variable "lambda_list_invoke_arn" {
+  type = string
+}
+
+variable "lambda_list_function_name" {
+  type = string
+}

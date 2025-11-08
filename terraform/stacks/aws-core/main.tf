@@ -135,6 +135,13 @@ module "lambda_activate" {
   depends_on = [module.iot]
 }
 
+module "lambda_list_machines" {
+  source = "../../modules/aws/lambda-list-machines"
+
+  project_name = var.project_name
+  environment  = var.environment
+}
+
 # API Gateway Module
 module "api_gateway" {
   source = "../../modules/aws/api-gateway"
@@ -143,8 +150,10 @@ module "api_gateway" {
   environment                    = var.environment
   lambda_activate_invoke_arn     = module.lambda_activate.invoke_arn
   lambda_activate_function_name  = module.lambda_activate.function_name
+  lambda_list_invoke_arn         = module.lambda_list_machines.invoke_arn
+  lambda_list_function_name      = module.lambda_list_machines.function_name
 
-  depends_on = [module.lambda_activate]
+  depends_on = [module.lambda_activate, module.lambda_list_machines]
 }
 
 # ECR Module
