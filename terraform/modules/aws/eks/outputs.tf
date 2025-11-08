@@ -25,3 +25,12 @@ output "cluster_certificate_authority_data" {
 output "kubeconfig_command" {
   value = "aws eks update-kubeconfig --region us-east-1 --name ${aws_eks_cluster.main.name}"
 }
+
+output "node_role_name" {
+  description = "Nome do IAM role dos nodes"
+  value       = aws_iam_role.eks_node_group.name
+}
+
+output "node_role_arn" {
+  value = aws_iam_role.eks_node_group.arn
+}

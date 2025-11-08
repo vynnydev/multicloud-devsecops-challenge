@@ -94,3 +94,75 @@ module "alb" {
 
   depends_on = [module.vpc]
 }
+
+# FortiGate Module
+module "fortinet" {
+  source = "../../modules/aws/fortinet"
+
+  project_name           = var.project_name
+  environment            = var.environment
+  vpc_id                 = module.vpc.vpc_id
+  public_subnet_id       = module.vpc.public_subnet_ids[0]
+  private_subnet_id      = module.vpc.private_subnet_ids[0]
+  alb_security_group_id  = module.alb.alb_security_group_id
+  instance_type          = "t3.small"
+
+  depends_on = [module.vpc, module.alb]
+}
+
+# CloudWatch Module
+module "cloudwatch" {
+  source = "../../modules/aws/cloudwatch"
+
+  project_name        = var.project_name
+  environment         = var.environment
+  eks_cluster_name    = module.eks.cluster_name
+  rds_instance_id     = module.rds.db_instance_id
+  kinesis_stream_name = module.kinesis.stream_name
+  alb_arn_suffix      = split("/", module.alb.alb_arn)[1]
+
+  depends_on = [module.eks, module.rds, module.kinesis, module.alb]
+}
+
+# Lambda Activate Machine Module
+module "lambda_activate" {
+  source = "../../modules/aws/lambda-activate"
+
+  project_name = var.project_name
+  environment  = var.environment
+  iot_topic    = "factory/pumps/data"
+
+  depends_on = [module.iot]
+}
+
+# API Gateway Module
+module "api_gateway" {
+  source = "../../modules/aws/api-gateway"
+
+  project_name                   = var.project_name
+  environment                    = var.environment
+  lambda_activate_invoke_arn     = module.lambda_activate.invoke_arn
+  lambda_activate_function_name  = module.lambda_activate.function_name
+
+  depends_on = [module.lambda_activate]
+}
+
+# ECR Module
+module "ecr" {
+  source = "../../modules/aws/ecr"
+
+  project_name = var.project_name
+  environment  = var.environment
+  
+  repository_names = [
+    "iot-ingestion-service",
+    "frontend-monitor",
+    "frontend-analysis"
+  ]
+}
+
+# Attach ECR Policy to EKS Node Role
+resource "aws_iam_role_policy_attachment" "eks_ecr_pull" {
+  policy_arn = module.ecr.ecr_pull_policy_arn
+  role       = module.eks.node_role_name 
+}

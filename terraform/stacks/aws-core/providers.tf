@@ -21,3 +21,14 @@ provider "aws" {
     }
   }
 }
+
+# Lambda Simulator Module
+module "lambda_simulator" {
+  source = "../../modules/aws/lambda-simulator"
+
+  project_name = var.project_name
+  environment  = var.environment
+  iot_topic    = "factory/pumps/data"
+
+  depends_on = [module.iot]
+}
