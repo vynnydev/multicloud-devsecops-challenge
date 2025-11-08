@@ -151,6 +151,13 @@ module "dynamodb_industry" {
   table_name   = "industry-machines"
 }
 
+# DynamoDB Machines Status (para manutenção)
+module "dynamodb_maintenance" {
+  source = "../../modules/aws/dynamodb-maintenance"
+
+  tags = local.common_tags
+}
+
 # Lambda Register Machine
 module "lambda_register_machine" {
   source = "../../modules/aws/lambda-register-machine"
