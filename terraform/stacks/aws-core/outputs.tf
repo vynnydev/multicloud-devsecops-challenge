@@ -375,3 +375,65 @@ output "delete_machine_url" {
   description = "⭐ Endpoint para deletar máquina (DELETE)"
   value       = "DELETE ${module.api_gateway.api_endpoint}/machines/{machine_id}"
 }
+
+# ============================================================================
+# COGNITO OUTPUTS
+# ============================================================================
+
+output "cognito_user_pool_id" {
+  description = "🔐 Cognito User Pool ID"
+  value       = module.cognito.user_pool_id
+}
+
+output "cognito_client_id" {
+  description = "🔑 Cognito Client ID (usar no frontend)"
+  value       = module.cognito.client_id
+}
+
+output "cognito_user_pool_endpoint" {
+  description = "🌐 Cognito User Pool Endpoint"
+  value       = module.cognito.user_pool_endpoint
+}
+
+output "cognito_domain" {
+  description = "🌐 Cognito Hosted UI Domain"
+  value       = "${module.cognito.domain}.auth.us-east-1.amazoncognito.com"
+}
+
+# ============================================================================
+# AUTH API ENDPOINTS
+# ============================================================================
+
+output "auth_register_url" {
+  description = "📝 Endpoint para registro (POST)"
+  value       = "${module.api_gateway.api_endpoint}/auth/register"
+}
+
+output "auth_login_url" {
+  description = "🔐 Endpoint para login (POST)"
+  value       = "${module.api_gateway.api_endpoint}/auth/login"
+}
+
+# ============================================================================
+# DYNAMODB USERS TABLE
+# ============================================================================
+
+output "users_table_name" {
+  description = "📊 Nome da tabela DynamoDB de usuários"
+  value       = module.dynamodb_users.table_name
+}
+
+# ============================================================================
+# RESUMO DE AUTENTICAÇÃO
+# ============================================================================
+
+output "auth_summary" {
+  description = "📋 Resumo completo da autenticação"
+  value = {
+    cognito_user_pool_id = module.cognito.user_pool_id
+    cognito_client_id    = module.cognito.client_id
+    register_endpoint    = "${module.api_gateway.api_endpoint}/auth/register"
+    login_endpoint       = "${module.api_gateway.api_endpoint}/auth/login"
+    users_table          = module.dynamodb_users.table_name
+  }
+}

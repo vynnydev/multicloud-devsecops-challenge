@@ -124,22 +124,18 @@ module "cloudwatch" {
   depends_on = [module.eks, module.rds, module.kinesis, module.alb]
 }
 
-# Lambda Activate Machine Module
-module "lambda_activate" {
-  source = "../../modules/aws/lambda-activate"
+# ECR Module
+module "ecr" {
+  source = "../../modules/aws/ecr"
 
   project_name = var.project_name
   environment  = var.environment
-  iot_topic    = "factory/pumps/data"
-
-  depends_on = [module.iot]
-}
-
-module "lambda_list_machines" {
-  source = "../../modules/aws/lambda-list-machines"
-
-  project_name = var.project_name
-  environment  = var.environment
+  
+  repository_names = [
+    "iot-ingestion-service",
+    "frontend-monitor",
+    "frontend-analysis"
+  ]
 }
 
 # DynamoDB Industry Machines
@@ -156,6 +152,48 @@ module "dynamodb_maintenance" {
   source = "../../modules/aws/dynamodb-maintenance"
 
   tags = local.common_tags
+}
+
+# ============================================================================
+# COGNITO
+# ============================================================================
+
+module "cognito" {
+  source = "../../modules/aws/cognito"
+
+  project_name = var.project_name
+  environment  = var.environment
+  tags         = local.common_tags
+}
+
+# ============================================================================
+# DYNAMODB USERS
+# ============================================================================
+
+module "dynamodb_users" {
+  source = "../../modules/aws/dynamodb-users"
+
+  project_name = var.project_name
+  environment  = var.environment
+  tags         = local.common_tags
+}
+
+# Lambda Activate Machine Module
+module "lambda_activate" {
+  source = "../../modules/aws/lambda-activate"
+
+  project_name = var.project_name
+  environment  = var.environment
+  iot_topic    = "factory/pumps/data"
+
+  depends_on = [module.iot]
+}
+
+module "lambda_list_machines" {
+  source = "../../modules/aws/lambda-list-machines"
+
+  project_name = var.project_name
+  environment  = var.environment
 }
 
 # Lambda Register Machine
@@ -191,43 +229,78 @@ module "lambda_delete_machine" {
   depends_on = [module.dynamodb_industry]
 }
 
+# ============================================================================
+# LAMBDAS DE AUTENTICAÇÃO
+# ============================================================================
+
+module "lambda_register_user" {
+  source = "../../modules/aws/lambda-register-user"
+
+  project_name           = var.project_name
+  environment            = var.environment
+  cognito_user_pool_id   = module.cognito.user_pool_id
+  cognito_user_pool_arn  = module.cognito.user_pool_arn
+  cognito_client_id      = module.cognito.client_id
+  dynamodb_table_name    = module.dynamodb_users.table_name
+  dynamodb_table_arn     = module.dynamodb_users.table_arn
+  tags                   = local.common_tags
+
+  depends_on = [module.cognito, module.dynamodb_users]
+}
+
+module "lambda_login_user" {
+  source = "../../modules/aws/lambda-login-user"
+
+  project_name           = var.project_name
+  environment            = var.environment
+  cognito_user_pool_id   = module.cognito.user_pool_id
+  cognito_user_pool_arn  = module.cognito.user_pool_arn
+  cognito_client_id      = module.cognito.client_id
+  dynamodb_table_name    = module.dynamodb_users.table_name
+  dynamodb_table_arn     = module.dynamodb_users.table_arn
+  tags                   = local.common_tags
+
+  depends_on = [module.cognito, module.dynamodb_users]
+}
+
+# ============================================================================
+# API GATEWAY
+# ============================================================================
+
+
 # API Gateway Module
 module "api_gateway" {
   source = "../../modules/aws/api-gateway"
 
-  project_name                       = var.project_name
-  environment                        = var.environment
-  lambda_activate_invoke_arn         = module.lambda_activate.invoke_arn
-  lambda_activate_function_name      = module.lambda_activate.function_name
-  lambda_list_invoke_arn             = module.lambda_list_machines.invoke_arn
-  lambda_list_function_name          = module.lambda_list_machines.function_name
-  lambda_register_invoke_arn         = module.lambda_register_machine.invoke_arn
-  lambda_register_function_name      = module.lambda_register_machine.function_name
-  lambda_list_industry_invoke_arn    = module.lambda_list_industry.invoke_arn
-  lambda_list_industry_function_name = module.lambda_list_industry.function_name
-  lambda_delete_invoke_arn           = module.lambda_delete_machine.invoke_arn
-  lambda_delete_function_name        = module.lambda_delete_machine.function_name
+  project_name = var.project_name
+  environment  = var.environment
+  
+  # Lambdas de máquinas
+  lambda_activate_invoke_arn            = module.lambda_activate.invoke_arn
+  lambda_activate_function_name         = module.lambda_activate.function_name
+  lambda_list_invoke_arn                = module.lambda_list_machines.invoke_arn
+  lambda_list_function_name             = module.lambda_list_machines.function_name
+  lambda_register_machine_invoke_arn    = module.lambda_register_machine.invoke_arn  # ← CORRIGIDO
+  lambda_register_machine_function_name = module.lambda_register_machine.function_name  # ← CORRIGIDO
+  lambda_list_industry_invoke_arn       = module.lambda_list_industry.invoke_arn
+  lambda_list_industry_function_name    = module.lambda_list_industry.function_name
+  lambda_delete_invoke_arn              = module.lambda_delete_machine.invoke_arn
+  lambda_delete_function_name           = module.lambda_delete_machine.function_name
+  
+  # Lambdas de autenticação
+  lambda_register_user_invoke_arn       = module.lambda_register_user.invoke_arn  # ← CORRIGIDO
+  lambda_register_user_function_name    = module.lambda_register_user.function_name  # ← CORRIGIDO
+  lambda_login_invoke_arn               = module.lambda_login_user.invoke_arn
+  lambda_login_function_name            = module.lambda_login_user.function_name
 
   depends_on = [
     module.lambda_activate,
     module.lambda_list_machines,
     module.lambda_register_machine,
     module.lambda_list_industry,
-    module.lambda_delete_machine
-  ]
-}
-
-# ECR Module
-module "ecr" {
-  source = "../../modules/aws/ecr"
-
-  project_name = var.project_name
-  environment  = var.environment
-  
-  repository_names = [
-    "iot-ingestion-service",
-    "frontend-monitor",
-    "frontend-analysis"
+    module.lambda_delete_machine,
+    module.lambda_register_user,
+    module.lambda_login_user
   ]
 }
 

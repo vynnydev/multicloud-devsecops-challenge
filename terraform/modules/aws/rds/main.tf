@@ -6,7 +6,9 @@ resource "random_password" "master_password" {
 
 # Secrets Manager para guardar a senha
 resource "aws_secretsmanager_secret" "rds_password" {
-  name = "${var.project_name}-${var.environment}-rds-password"
+  name                    = "${var.project_name}-${var.environment}-rds-password-v2"  # ← ADICIONAR -v2
+  description             = "RDS master password"
+  recovery_window_in_days = 0  # ← IMPORTANTE: Permite deletar imediatamente
 
   tags = var.tags
 }
