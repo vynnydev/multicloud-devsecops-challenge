@@ -17,7 +17,7 @@ import {
   AlertTriangle,
   CheckCircle,
 } from "lucide-react"
-import { fetchMachines, fetchReviewMachines, type MachineData } from "@/lib/api"
+import { fetchMachines, fetchReviewMachines, fetchMachinesFromMockAPI, type MachineData } from "@/lib/api"
 
 interface MachineListProps {
   onSelectMachine: (machine: MachineData) => void
@@ -40,7 +40,18 @@ export function MachineList({ onSelectMachine, selectedMachine, onStartAiAnalysi
       setError(null)
 
       try {
-        const [industryData, reviewData] = await Promise.all([fetchMachines(), fetchReviewMachines()])
+        let industryData: MachineData[] = []
+        let reviewData: MachineData[] = []
+
+        try {
+          industryData = await fetchMachinesFromMockAPI()
+          reviewData = industryData.filter((m) => m.status === "warning" || m.status === "critical")
+          industryData = industryData.filter((m) => m.status !== "warning" && m.status !== "critical")
+        } catch {
+          const [externalData, externalReviewData] = await Promise.all([fetchMachines(), fetchReviewMachines()])
+          industryData = externalData
+          reviewData = externalReviewData
+        }
 
         setMachines(industryData)
         setReviewMachines(reviewData)
@@ -57,8 +68,6 @@ export function MachineList({ onSelectMachine, selectedMachine, onStartAiAnalysi
     }
 
     loadMachines()
-
-    // Users can manually refresh the page when needed
   }, [])
 
   const filteredMachines = machines.filter(

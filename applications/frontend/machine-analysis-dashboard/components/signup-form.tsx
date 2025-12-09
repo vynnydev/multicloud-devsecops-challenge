@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,6 +9,9 @@ import { Eye, EyeOff, Factory, AlertCircle, CheckCircle } from 'lucide-react'
 import Link from "next/link"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { useAuth } from "@/contexts/auth-context"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import type { UserRole, JobFunction } from "@/lib/user-roles"
+import { roleLabels, jobFunctionLabels } from "@/lib/user-roles"
 
 export function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -24,6 +26,8 @@ export function SignUpForm() {
     password: "",
     confirmPassword: "",
     locationId: "",
+    role: "" as UserRole,
+    jobFunction: "" as JobFunction,
   })
   const { register } = useAuth()
 
@@ -53,6 +57,8 @@ export function SignUpForm() {
         username: formData.username,
         location_id: formData.locationId,
         password: formData.password,
+        role: formData.role,
+        jobFunction: formData.jobFunction,
       })
 
       setSuccess(true)
@@ -193,6 +199,48 @@ export function SignUpForm() {
               {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
             </button>
           </div>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="role">Função no Software</Label>
+          <Select
+            value={formData.role}
+            onValueChange={(value) => setFormData({ ...formData, role: value as UserRole })}
+            required
+          >
+            <SelectTrigger className="h-11">
+              <SelectValue placeholder="Selecione sua função" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="viewer">Visualizador</SelectItem>
+              <SelectItem value="operator">Operador</SelectItem>
+              <SelectItem value="technician">Técnico</SelectItem>
+              <SelectItem value="manager">Gerente</SelectItem>
+              <SelectItem value="admin">Administrador</SelectItem>
+            </SelectContent>
+          </Select>
+          <p className="text-xs text-muted-foreground">Define suas permissões no sistema</p>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="jobFunction">Cargo na Empresa</Label>
+          <Select
+            value={formData.jobFunction}
+            onValueChange={(value) => setFormData({ ...formData, jobFunction: value as JobFunction })}
+            required
+          >
+            <SelectTrigger className="h-11">
+              <SelectValue placeholder="Selecione seu cargo" />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.entries(jobFunctionLabels).map(([value, label]) => (
+                <SelectItem key={value} value={value}>
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <p className="text-xs text-muted-foreground">Sua função profissional na organização</p>
         </div>
 
         <Button

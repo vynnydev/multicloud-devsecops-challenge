@@ -1,0 +1,1212 @@
+{
+  "machines": [
+    {
+      "id": "machine-1",
+      "name": "Bomba Centrífuga BC-2000",
+      "model": "BC-2000",
+      "type": "centrifugal-pump",
+      "status": "operational",
+      "location": "Setor A - Linha 1",
+      "lastMaintenance": "2025-11-10",
+      "nextMaintenance": "2026-02-08",
+      "efficiency": 94,
+      "metrics": {
+        "temperature": 65,
+        "temperatureStatus": "normal",
+        "vibration": 2.1,
+        "vibrationStatus": "normal",
+        "pressure": 8.5,
+        "pressureStatus": "normal",
+        "runtime": 156,
+        "runtimeHours": 3744
+      }
+    },
+    {
+      "id": "machine-2",
+      "name": "Motor V8 Turbo",
+      "model": "V8-4.0T",
+      "type": "car-engine",
+      "status": "operational",
+      "location": "Oficina Central",
+      "lastMaintenance": "2025-11-15",
+      "nextMaintenance": "2026-02-13",
+      "efficiency": 91,
+      "metrics": {
+        "temperature": 72,
+        "temperatureStatus": "normal",
+        "vibration": 1.5,
+        "vibrationStatus": "normal",
+        "pressure": 9.2,
+        "pressureStatus": "normal",
+        "runtime": 120,
+        "runtimeHours": 2880
+      }
+    },
+    {
+      "id": "machine-3",
+      "name": "Ressonância Magnética MRI-3000",
+      "model": "MRI-3000",
+      "type": "mri-machine",
+      "status": "warning",
+      "location": "Hospital Central - Radiologia",
+      "lastMaintenance": "2025-09-26",
+      "nextMaintenance": "2025-12-05",
+      "efficiency": 78,
+      "metrics": {
+        "temperature": 88,
+        "temperatureStatus": "warning",
+        "vibration": 4.2,
+        "vibrationStatus": "warning",
+        "pressure": 10.5,
+        "pressureStatus": "warning",
+        "runtime": 200,
+        "runtimeHours": 4800
+      }
+    },
+    {
+      "id": "machine-4",
+      "name": "Ônibus Elétrico Volvo 7900",
+      "model": "7900-E",
+      "type": "electric-bus",
+      "status": "operational",
+      "location": "Garagem Norte",
+      "lastMaintenance": "2025-11-18",
+      "nextMaintenance": "2026-02-16",
+      "efficiency": 96,
+      "metrics": {
+        "temperature": 58,
+        "temperatureStatus": "normal",
+        "vibration": 1.2,
+        "vibrationStatus": "normal",
+        "pressure": 7.5,
+        "pressureStatus": "normal",
+        "runtime": 95,
+        "runtimeHours": 2280
+      }
+    },
+    {
+      "id": "machine-5",
+      "name": "Lavadora Industrial LW-5000",
+      "model": "LW-5000",
+      "type": "industrial-washer",
+      "status": "operational",
+      "location": "Lavanderia - Setor B",
+      "lastMaintenance": "2025-11-05",
+      "nextMaintenance": "2026-02-03",
+      "efficiency": 89,
+      "metrics": {
+        "temperature": 68,
+        "temperatureStatus": "normal",
+        "vibration": 2.8,
+        "vibrationStatus": "normal",
+        "pressure": 8.8,
+        "pressureStatus": "normal",
+        "runtime": 180,
+        "runtimeHours": 4320
+      }
+    }
+  ],
+  "locations": [
+    {
+      "id": "oficina",
+      "name": "Oficina Centro Automotiva",
+      "type": "workshop",
+      "corridors": 3,
+      "zones": ["Zone A1", "Zone A2", "Zone A3"],
+      "machines": [
+        {
+          "id": "m1",
+          "name": "Braço Robótico BR-001",
+          "type": "robotic_arm",
+          "corridor": 1,
+          "position": { "x": 1, "y": 1 },
+          "status": "operating",
+          "efficiency": 86.8,
+          "performance": 94.3,
+          "quality": 98.3,
+          "availability": 92.0
+        },
+        {
+          "id": "m2",
+          "name": "Torno CNC T-3000",
+          "type": "cnc",
+          "corridor": 2,
+          "position": { "x": 1, "y": 2 },
+          "status": "maintenance",
+          "efficiency": 0,
+          "performance": 0,
+          "quality": 0,
+          "availability": 0
+        },
+        {
+          "id": "m3",
+          "name": "Empilhadeira E-200",
+          "type": "forklift",
+          "corridor": 3,
+          "position": { "x": 1, "y": 1 },
+          "status": "operating",
+          "efficiency": 92.5,
+          "performance": 88.7,
+          "quality": 100,
+          "availability": 95.0
+        }
+      ]
+    },
+    {
+      "id": "fabrica",
+      "name": "Fábrica Industrial",
+      "type": "factory",
+      "corridors": 4,
+      "zones": ["Zone T1", "Zone T2", "Zone T3", "Zone T4"],
+      "machines": [
+        {
+          "id": "f1",
+          "name": "Linha de Montagem LM-01",
+          "type": "industrial",
+          "corridor": 1,
+          "position": { "x": 1, "y": 1 },
+          "status": "operating",
+          "efficiency": 91.2,
+          "performance": 95.8,
+          "quality": 97.5,
+          "availability": 94.0
+        },
+        {
+          "id": "f2",
+          "name": "Braço Robótico BR-500",
+          "type": "robotic_arm",
+          "corridor": 2,
+          "position": { "x": 1, "y": 2 },
+          "status": "operating",
+          "efficiency": 88.5,
+          "performance": 92.1,
+          "quality": 96.8,
+          "availability": 91.5
+        },
+        {
+          "id": "f3",
+          "name": "CNC Industrial CI-800",
+          "type": "cnc",
+          "corridor": 3,
+          "position": { "x": 1, "y": 1 },
+          "status": "operating",
+          "efficiency": 85.0,
+          "performance": 89.5,
+          "quality": 99.2,
+          "availability": 88.0
+        },
+        {
+          "id": "f4",
+          "name": "Empilhadeira E-300",
+          "type": "forklift",
+          "corridor": 4,
+          "position": { "x": 1, "y": 2 },
+          "status": "operating",
+          "efficiency": 90.0,
+          "performance": 87.5,
+          "quality": 100,
+          "availability": 93.0
+        }
+      ]
+    },
+    {
+      "id": "galpao",
+      "name": "Galpão Logístico",
+      "type": "warehouse",
+      "corridors": 5,
+      "zones": ["Ala Norte", "Ala Sul", "Ala Leste", "Ala Oeste", "Centro"],
+      "machines": [
+        {
+          "id": "g1",
+          "name": "Empilhadeira E-400",
+          "type": "forklift",
+          "corridor": 1,
+          "position": { "x": 1, "y": 1 },
+          "status": "operating",
+          "efficiency": 93.5,
+          "performance": 91.2,
+          "quality": 100,
+          "availability": 96.0
+        },
+        {
+          "id": "g2",
+          "name": "Empilhadeira E-401",
+          "type": "forklift",
+          "corridor": 2,
+          "position": { "x": 1, "y": 2 },
+          "status": "operating",
+          "efficiency": 91.0,
+          "performance": 89.5,
+          "quality": 100,
+          "availability": 94.5
+        },
+        {
+          "id": "g3",
+          "name": "Braço Robótico BR-700",
+          "type": "robotic_arm",
+          "corridor": 3,
+          "position": { "x": 1, "y": 1 },
+          "status": "operating",
+          "efficiency": 87.5,
+          "performance": 93.0,
+          "quality": 98.0,
+          "availability": 90.0
+        },
+        {
+          "id": "g4",
+          "name": "Empilhadeira E-402",
+          "type": "forklift",
+          "corridor": 4,
+          "position": { "x": 1, "y": 2 },
+          "status": "maintenance",
+          "efficiency": 0,
+          "performance": 0,
+          "quality": 0,
+          "availability": 0
+        },
+        {
+          "id": "g5",
+          "name": "Sistema Automatizado SA-100",
+          "type": "industrial",
+          "corridor": 5,
+          "position": { "x": 1, "y": 1 },
+          "status": "operating",
+          "efficiency": 95.0,
+          "performance": 96.5,
+          "quality": 99.5,
+          "availability": 97.0
+        }
+      ]
+    }
+  ],
+  "employees": [
+    {
+      "id": "1",
+      "name": "Carlos Oliveira",
+      "email": "carlos.oliveira@cognitiva.com",
+      "phone": "+55 (11) 98765-4321",
+      "role": "Técnico de Manutenção",
+      "department": "Manutenção",
+      "team": "Equipe Alpha",
+      "location": "Oficina Centro Automotiva",
+      "status": "online",
+      "joinDate": "15 Jan 2024",
+      "avatar": "CO"
+    },
+    {
+      "id": "2",
+      "name": "Ana Paula Santos",
+      "email": "ana.santos@cognitiva.com",
+      "phone": "+55 (11) 98765-1234",
+      "role": "Engenheira",
+      "department": "Engenharia",
+      "team": "Equipe Beta",
+      "location": "Oficina Centro Automotiva",
+      "status": "online",
+      "joinDate": "22 Feb 2024",
+      "avatar": "AS"
+    },
+    {
+      "id": "3",
+      "name": "Roberto Silva",
+      "email": "roberto.silva@cognitiva.com",
+      "phone": "+55 (11) 98765-5678",
+      "role": "Operador",
+      "department": "Operações",
+      "team": "Equipe Alpha",
+      "location": "Fábrica Sul",
+      "status": "idle",
+      "joinDate": "10 Mar 2024",
+      "avatar": "RS"
+    },
+    {
+      "id": "4",
+      "name": "Juliana Costa",
+      "email": "juliana.costa@cognitiva.com",
+      "phone": "+55 (11) 98765-9012",
+      "role": "Analista",
+      "department": "Análise",
+      "team": "Equipe Gamma",
+      "location": "Oficina Centro Automotiva",
+      "status": "online",
+      "joinDate": "05 Apr 2024",
+      "avatar": "JC"
+    },
+    {
+      "id": "5",
+      "name": "Pedro Almeida",
+      "email": "pedro.almeida@cognitiva.com",
+      "phone": "+55 (11) 98765-3456",
+      "role": "Supervisor",
+      "department": "Supervisão",
+      "team": "Equipe Alpha",
+      "location": "Fábrica Norte",
+      "status": "offline",
+      "joinDate": "18 May 2024",
+      "avatar": "PA"
+    },
+    {
+      "id": "6",
+      "name": "Marina Rodrigues",
+      "email": "marina.rodrigues@cognitiva.com",
+      "phone": "+55 (11) 98765-7890",
+      "role": "Técnico de Manutenção",
+      "department": "Manutenção",
+      "team": "Equipe Beta",
+      "location": "Oficina Centro Automotiva",
+      "status": "online",
+      "joinDate": "12 Jun 2024",
+      "avatar": "MR"
+    },
+    {
+      "id": "7",
+      "name": "Lucas Ferreira",
+      "email": "lucas.ferreira@cognitiva.com",
+      "phone": "+55 (11) 98765-2345",
+      "role": "Engenheiro",
+      "department": "Engenharia",
+      "team": "Equipe Gamma",
+      "location": "Fábrica Sul",
+      "status": "idle",
+      "joinDate": "25 Jul 2024",
+      "avatar": "LF"
+    },
+    {
+      "id": "8",
+      "name": "Fernanda Lima",
+      "email": "fernanda.lima@cognitiva.com",
+      "phone": "+55 (11) 98765-6789",
+      "role": "Operador",
+      "department": "Operações",
+      "team": "Equipe Alpha",
+      "location": "Oficina Centro Automotiva",
+      "status": "online",
+      "joinDate": "08 Aug 2024",
+      "avatar": "FL"
+    },
+    {
+      "id": "9",
+      "name": "Ricardo Mendes",
+      "email": "ricardo.mendes@cognitiva.com",
+      "phone": "+55 (11) 98765-0123",
+      "role": "Analista",
+      "department": "Análise",
+      "team": "Equipe Beta",
+      "location": "Fábrica Norte",
+      "status": "offline",
+      "joinDate": "14 Sep 2024",
+      "avatar": "RM"
+    },
+    {
+      "id": "10",
+      "name": "Camila Souza",
+      "email": "camila.souza@cognitiva.com",
+      "phone": "+55 (11) 98765-4567",
+      "role": "Supervisor",
+      "department": "Supervisão",
+      "team": "Equipe Gamma",
+      "location": "Oficina Centro Automotiva",
+      "status": "online",
+      "joinDate": "20 Oct 2024",
+      "avatar": "CS"
+    }
+  ],
+  "teamMembers": [
+    { "id": "1", "name": "João Silva", "avatar": null },
+    { "id": "2", "name": "Maria Santos", "avatar": null },
+    { "id": "3", "name": "Carlos Oliveira", "avatar": null },
+    { "id": "4", "name": "Ana Costa", "avatar": null },
+    { "id": "5", "name": "Pedro Alves", "avatar": null },
+    { "id": "6", "name": "Lucas Mendes", "avatar": null },
+    { "id": "7", "name": "Fernanda Lima", "avatar": null },
+    { "id": "8", "name": "Roberto Santos", "avatar": null },
+    { "id": "9", "name": "Juliana Rocha", "avatar": null },
+    { "id": "10", "name": "Marcos Ferreira", "avatar": null }
+  ],
+  "teamMetrics": {
+    "30days": {
+      "totalEmployees": 43,
+      "employeeChange": 2.8,
+      "employeeChangeText": "+8 desde o último mês",
+      "jobApplicants": 130,
+      "applicantChange": 13.9,
+      "applicantChangeText": "+48 desde o último mês",
+      "totalSalary": 98842.0,
+      "salaryChange": 24,
+      "salaryChangeText": "+R$ 4.214,00 desde o último mês",
+      "attendanceRate": 56,
+      "attendanceChange": -17,
+      "attendanceChangeText": "-16.4% desde o último mês"
+    },
+    "3months": {
+      "totalEmployees": 51,
+      "employeeChange": 18.6,
+      "employeeChangeText": "+15 desde 3 meses atrás",
+      "jobApplicants": 387,
+      "applicantChange": 29.8,
+      "applicantChangeText": "+142 desde 3 meses atrás",
+      "totalSalary": 287456.0,
+      "salaryChange": 31,
+      "salaryChangeText": "+R$ 12.845,00 desde 3 meses atrás",
+      "attendanceRate": 68,
+      "attendanceChange": 8,
+      "attendanceChangeText": "+8.2% desde 3 meses atrás"
+    },
+    "6months": {
+      "totalEmployees": 63,
+      "employeeChange": 46.5,
+      "employeeChangeText": "+28 desde 6 meses atrás",
+      "jobApplicants": 742,
+      "applicantChange": 54.2,
+      "applicantChangeText": "+278 desde 6 meses atrás",
+      "totalSalary": 562890.0,
+      "salaryChange": 47,
+      "salaryChangeText": "+R$ 24.560,00 desde 6 meses atrás",
+      "attendanceRate": 73,
+      "attendanceChange": 15,
+      "attendanceChangeText": "+15.3% desde 6 meses atrás"
+    }
+  },
+  "teamDistribution": [
+    { "role": "Técnicos de Manutenção", "count": 8, "color": "bg-blue-500" },
+    { "role": "Engenheiros", "count": 6, "color": "bg-orange-500" },
+    { "role": "Operadores", "count": 10, "color": "bg-purple-500" },
+    { "role": "Analistas", "count": 5, "color": "bg-green-500" },
+    { "role": "Supervisores", "count": 4, "color": "bg-yellow-500" }
+  ],
+  "projects": [
+    { "id": "manutencao", "name": "Manutenção Preventiva" },
+    { "id": "corretiva", "name": "Manutenção Corretiva" },
+    { "id": "automacao", "name": "Automação Industrial" },
+    { "id": "upgrade", "name": "Upgrade de Equipamentos" },
+    { "id": "calibracao", "name": "Calibração de Sensores" }
+  ],
+  "tasks": {
+    "todo": [
+      {
+        "id": "1",
+        "title": "Inspeção de bomba centrífuga",
+        "description": "Verificar condição do impelidor e selo mecânico",
+        "tags": ["manutenção", "urgente"],
+        "priority": "high",
+        "progress": 0,
+        "comments": 3,
+        "attachments": 2,
+        "assignees": [{ "name": "João Silva", "avatar": null }, { "name": "Maria Santos", "avatar": null }],
+        "dueDate": "2025-11-20",
+        "createdAt": "2025-11-15",
+        "status": "A Fazer",
+        "machine": "Bomba Centrífuga BC-101",
+        "location": "Setor de Produção A"
+      },
+      {
+        "id": "2",
+        "title": "Calibração de sensores",
+        "description": "Calibrar sensores de temperatura e pressão",
+        "tags": ["automação", "preventiva"],
+        "priority": "medium",
+        "progress": 15,
+        "comments": 1,
+        "attachments": 1,
+        "assignees": [{ "name": "Carlos Oliveira", "avatar": null }],
+        "dueDate": "2025-11-22",
+        "createdAt": "2025-11-16",
+        "status": "A Fazer",
+        "machine": "Sensor Industrial SI-205",
+        "location": "Linha de Montagem 3"
+      }
+    ],
+    "inProgress": [
+      {
+        "id": "3",
+        "title": "Troca de óleo do compressor",
+        "description": "Substituir óleo e filtros do compressor industrial",
+        "tags": ["manutenção", "rotina"],
+        "priority": "medium",
+        "progress": 65,
+        "comments": 5,
+        "attachments": 3,
+        "assignees": [
+          { "name": "Ana Costa", "avatar": null },
+          { "name": "Pedro Alves", "avatar": null },
+          { "name": "Lucas Mendes", "avatar": null }
+        ],
+        "dueDate": "2025-11-19",
+        "createdAt": "2025-11-12",
+        "status": "Em Progresso",
+        "machine": "Compressor Industrial CI-450",
+        "location": "Oficina Central"
+      },
+      {
+        "id": "4",
+        "title": "Implementar automação de lubrificação",
+        "description": "Instalar sistema automático de lubrificação",
+        "tags": ["automação", "upgrade"],
+        "priority": "low",
+        "progress": 40,
+        "comments": 8,
+        "attachments": 5,
+        "assignees": [{ "name": "Fernanda Lima", "avatar": null }, { "name": "Roberto Santos", "avatar": null }],
+        "dueDate": "2025-11-25",
+        "createdAt": "2025-11-10",
+        "status": "Em Progresso",
+        "machine": "Sistema de Lubrificação SL-320",
+        "location": "Galpão B"
+      }
+    ],
+    "review": [
+      {
+        "id": "5",
+        "title": "Revisão de motor elétrico",
+        "description": "Análise completa após manutenção",
+        "tags": ["inspeção", "qualidade"],
+        "priority": "medium",
+        "progress": 90,
+        "comments": 4,
+        "attachments": 2,
+        "assignees": [{ "name": "Juliana Rocha", "avatar": null }, { "name": "Marcos Ferreira", "avatar": null }],
+        "dueDate": "2025-11-18",
+        "createdAt": "2025-11-08",
+        "status": "Em Revisão",
+        "machine": "Motor Elétrico ME-780",
+        "location": "Setor de Produção B"
+      },
+      {
+        "id": "6",
+        "title": "Teste de válvula de segurança",
+        "description": "Testes de pressão e vazão",
+        "tags": ["teste", "segurança"],
+        "priority": "high",
+        "progress": 85,
+        "comments": 2,
+        "attachments": 1,
+        "assignees": [{ "name": "Patrícia Souza", "avatar": null }],
+        "dueDate": "2025-11-21",
+        "createdAt": "2025-11-14",
+        "status": "Em Revisão",
+        "machine": "Válvula de Segurança VS-112",
+        "location": "Sistema de Vapor"
+      }
+    ],
+    "done": [
+      {
+        "id": "7",
+        "title": "Atualização de firmware CNC",
+        "description": "Firmware atualizado com sucesso",
+        "tags": ["automação", "atualização"],
+        "priority": "low",
+        "progress": 100,
+        "comments": 6,
+        "attachments": 4,
+        "assignees": [{ "name": "Ricardo Gomes", "avatar": null }, { "name": "Camila Dias", "avatar": null }],
+        "dueDate": "2025-11-17",
+        "createdAt": "2025-11-05",
+        "status": "Concluído",
+        "machine": "CNC CNC-950",
+        "location": "Oficina de Usinagem"
+      }
+    ]
+  },
+  "reports": {
+    "machineReports": [
+      {
+        "id": "R-2025-001",
+        "machineId": "machine-1",
+        "machineName": "Bomba Centrífuga BC-2000",
+        "date": "2025-01-15",
+        "time": "14:30",
+        "health": 98,
+        "healthStatus": "Excelente",
+        "temperature": 72,
+        "temperatureStatus": "Normal",
+        "vibration": 2.1,
+        "vibrationStatus": "Normal",
+        "consumption": 45.2,
+        "consumptionStatus": "Eficiente",
+        "aiAnalysis": [
+          "Todos os sistemas operacionais",
+          "Componentes críticos verificados",
+          "Operando em condições ideais"
+        ],
+        "recommendations": ["Próxima manutenção: 90 dias", "Verificar rolamentos", "Manter lubrificação"]
+      },
+      {
+        "id": "R-2025-002",
+        "machineId": "machine-1",
+        "machineName": "Bomba Centrífuga BC-2000",
+        "date": "2025-01-10",
+        "time": "09:15",
+        "health": 92,
+        "healthStatus": "Bom",
+        "temperature": 75,
+        "temperatureStatus": "Normal",
+        "vibration": 2.8,
+        "vibrationStatus": "Atenção",
+        "consumption": 48.5,
+        "consumptionStatus": "Normal",
+        "aiAnalysis": ["Vibração levemente elevada", "Demais parâmetros normais", "Monitoramento recomendado"],
+        "recommendations": [
+          "Agendar inspeção de rolamentos",
+          "Verificar alinhamento do eixo",
+          "Continuar monitoramento"
+        ]
+      }
+    ],
+    "metricsReports": [
+      {
+        "id": "MR-2025-001",
+        "title": "Relatório de Tarefas e Máquinas",
+        "type": "tasks",
+        "date": "2025-01-20",
+        "time": "10:30",
+        "period": "30 Dias",
+        "summary": "24 máquinas monitoradas, 87% taxa de operação, 145 tarefas concluídas",
+        "metrics": {
+          "machinesMonitored": 24,
+          "operationRate": 87,
+          "tasksCompleted": 145,
+          "avgEfficiency": 91.5,
+          "maintenancePerformed": 18,
+          "alertsResolved": 32
+        }
+      },
+      {
+        "id": "MR-2025-002",
+        "title": "Relatório de Equipe e Performance",
+        "type": "team",
+        "date": "2025-01-18",
+        "time": "14:15",
+        "period": "3 Meses",
+        "summary": "51 funcionários, 68% taxa de presença, 387 candidatos a vagas",
+        "metrics": {
+          "totalEmployees": 51,
+          "attendanceRate": 68,
+          "jobApplicants": 387,
+          "tasksPerEmployee": 12.5,
+          "avgPerformance": 85.2,
+          "trainingHours": 156
+        }
+      },
+      {
+        "id": "MR-2025-003",
+        "title": "Relatório de Inventário",
+        "type": "inventory",
+        "date": "2025-01-15",
+        "time": "09:00",
+        "period": "30 Dias",
+        "summary": "342 itens em estoque, 28 pedidos realizados, 15 itens em baixa",
+        "metrics": {
+          "totalItems": 342,
+          "ordersPlaced": 28,
+          "lowStockItems": 15,
+          "inventoryValue": 485600,
+          "turnoverRate": 4.2,
+          "supplierCount": 12
+        }
+      },
+      {
+        "id": "MR-2025-004",
+        "title": "Relatório de Eficiência Operacional",
+        "type": "efficiency",
+        "date": "2025-01-12",
+        "time": "16:45",
+        "period": "6 Meses",
+        "summary": "89.5% eficiência média, 2.3% melhoria, 156 otimizações aplicadas",
+        "metrics": {
+          "avgEfficiency": 89.5,
+          "improvement": 2.3,
+          "optimizationsApplied": 156,
+          "energySaved": 12.8,
+          "downtimeReduced": 34,
+          "costSavings": 78500
+        }
+      }
+    ]
+  },
+  "inventory": [
+    {
+      "id": "inv-1",
+      "name": "Rolamento 6205-2RS",
+      "sku": "ROL-6205",
+      "category": "Rolamentos",
+      "quantity": 45,
+      "minQuantity": 10,
+      "price": 85.0,
+      "supplier": "SKF Brasil",
+      "lastUpdated": "2025-11-20"
+    },
+    {
+      "id": "inv-2",
+      "name": "Selo Mecânico 25mm",
+      "sku": "SEL-025",
+      "category": "Vedações",
+      "quantity": 8,
+      "minQuantity": 15,
+      "price": 320.0,
+      "supplier": "John Crane",
+      "lastUpdated": "2025-11-18"
+    },
+    {
+      "id": "inv-3",
+      "name": "Óleo Hidráulico ISO 46",
+      "sku": "OLE-046",
+      "category": "Lubrificantes",
+      "quantity": 120,
+      "minQuantity": 50,
+      "price": 45.0,
+      "supplier": "Petrobras",
+      "lastUpdated": "2025-11-19"
+    },
+    {
+      "id": "inv-4",
+      "name": "Correia V A68",
+      "sku": "COR-A68",
+      "category": "Transmissão",
+      "quantity": 25,
+      "minQuantity": 10,
+      "price": 55.0,
+      "supplier": "Gates Brasil",
+      "lastUpdated": "2025-11-21"
+    },
+    {
+      "id": "inv-5",
+      "name": "Sensor de Temperatura PT100",
+      "sku": "SEN-PT100",
+      "category": "Sensores",
+      "quantity": 12,
+      "minQuantity": 5,
+      "price": 180.0,
+      "supplier": "Omega Engineering",
+      "lastUpdated": "2025-11-17"
+    }
+  ],
+  "workshops": [
+    {
+      "id": "ws-1",
+      "name": "Oficina Centro Automotiva",
+      "address": "Rua Industrial, 500 - Centro",
+      "city": "São Paulo",
+      "state": "SP",
+      "status": "active",
+      "machineCount": 12,
+      "employeeCount": 8,
+      "rating": 4.8
+    },
+    {
+      "id": "ws-2",
+      "name": "Fábrica Industrial Norte",
+      "address": "Av. das Indústrias, 1200",
+      "city": "Guarulhos",
+      "state": "SP",
+      "status": "active",
+      "machineCount": 28,
+      "employeeCount": 24,
+      "rating": 4.6
+    },
+    {
+      "id": "ws-3",
+      "name": "Galpão Logístico Sul",
+      "address": "Rod. dos Imigrantes, km 25",
+      "city": "São Bernardo do Campo",
+      "state": "SP",
+      "status": "active",
+      "machineCount": 15,
+      "employeeCount": 12,
+      "rating": 4.7
+    }
+  ],
+  "bedrockAI": {
+    "scene3DConfig": {
+      "version": "1.0",
+      "lastUpdated": "2025-11-25T10:30:00Z",
+      "defaultCamera": {
+        "position": [25, 20, 25],
+        "fov": 50,
+        "near": 0.1,
+        "far": 1000
+      },
+      "lighting": {
+        "ambient": {
+          "intensity": 0.4,
+          "color": "#ffffff"
+        },
+        "directional": {
+          "intensity": 0.8,
+          "position": [10, 20, 10],
+          "color": "#ffffff",
+          "castShadow": true
+        },
+        "spotLights": [
+          {
+            "position": [0, 15, 0],
+            "intensity": 0.6,
+            "angle": 0.5,
+            "penumbra": 0.5,
+            "color": "#ffffff"
+          }
+        ]
+      },
+      "environment": {
+        "preset": "warehouse",
+        "fog": {
+          "enabled": true,
+          "color": "#1a1a2e",
+          "near": 30,
+          "far": 80
+        }
+      }
+    },
+    "machineModels": {
+      "robotic_arm": {
+        "modelType": "procedural",
+        "baseColor": "#f59e0b",
+        "metalness": 0.8,
+        "roughness": 0.2,
+        "components": [
+          {
+            "name": "base",
+            "geometry": "cylinder",
+            "dimensions": { "radiusTop": 0.5, "radiusBottom": 0.65, "height": 0.7 },
+            "position": [0, 0.4, 0]
+          },
+          {
+            "name": "lowerArm",
+            "geometry": "box",
+            "dimensions": [0.35, 1.6, 0.35],
+            "position": [0, 1.3, 0],
+            "rotation": [0, 0, 0.3]
+          },
+          {
+            "name": "joint",
+            "geometry": "sphere",
+            "dimensions": { "radius": 0.28 },
+            "position": [0.5, 2.2, 0]
+          },
+          {
+            "name": "upperArm",
+            "geometry": "box",
+            "dimensions": [0.28, 1.2, 0.28],
+            "position": [1.1, 2.5, 0],
+            "rotation": [0, 0, -0.5]
+          },
+          {
+            "name": "gripper",
+            "geometry": "box",
+            "dimensions": [0.2, 0.4, 0.2],
+            "position": [1.6, 3, 0],
+            "color": "#fbbf24"
+          }
+        ],
+        "animations": {
+          "operating": {
+            "type": "rotation",
+            "axis": "y",
+            "speed": 0.5,
+            "amplitude": 0.3
+          },
+          "idle": {
+            "type": "none"
+          }
+        },
+        "statusIndicator": {
+          "position": [0, 0.8, 0],
+          "size": 0.12,
+          "colors": {
+            "operating": "#10b981",
+            "maintenance": "#f59e0b",
+            "error": "#ef4444"
+          }
+        }
+      },
+      "forklift": {
+        "modelType": "procedural",
+        "baseColor": "#2563eb",
+        "metalness": 0.7,
+        "roughness": 0.3,
+        "scale": 0.7,
+        "components": [
+          {
+            "name": "body",
+            "geometry": "box",
+            "dimensions": [0.8, 0.6, 1.2],
+            "position": [0, 0.4, 0]
+          },
+          {
+            "name": "cabin",
+            "geometry": "box",
+            "dimensions": [0.7, 0.5, 0.6],
+            "position": [0, 0.9, 0.2],
+            "transparent": true,
+            "opacity": 0.7
+          },
+          {
+            "name": "mast",
+            "geometry": "box",
+            "dimensions": [0.15, 2.5, 0.15],
+            "position": [0, 1.5, -0.3],
+            "color": "#94a3b8"
+          },
+          {
+            "name": "leftFork",
+            "geometry": "box",
+            "dimensions": [0.1, 0.1, 1.2],
+            "position": [-0.2, 0.3, -0.8],
+            "color": "#f59e0b"
+          },
+          {
+            "name": "rightFork",
+            "geometry": "box",
+            "dimensions": [0.1, 0.1, 1.2],
+            "position": [0.2, 0.3, -0.8],
+            "color": "#f59e0b"
+          }
+        ],
+        "wheels": [
+          { "position": [-0.3, 0.15, 0.4], "radius": 0.18 },
+          { "position": [0.3, 0.15, 0.4], "radius": 0.18 },
+          { "position": [-0.3, 0.15, -0.4], "radius": 0.18 },
+          { "position": [0.3, 0.15, -0.4], "radius": 0.18 }
+        ],
+        "animations": {
+          "moving": {
+            "type": "translation",
+            "axis": "z",
+            "speed": 0.5,
+            "amplitude": 2
+          },
+          "forkLift": {
+            "type": "translation",
+            "axis": "y",
+            "speed": 1.5,
+            "amplitude": 0.2
+          }
+        },
+        "lights": {
+          "headlights": [
+            { "position": [0.3, 0.5, -0.5], "intensity": 0.4, "color": "#fbbf24" },
+            { "position": [-0.3, 0.5, -0.5], "intensity": 0.4, "color": "#fbbf24" }
+          ],
+          "safetyLight": {
+            "position": [0, 1.3, 0.2],
+            "color": "#f97316",
+            "intensity": 0.6,
+            "blinking": true
+          }
+        }
+      },
+      "cnc": {
+        "modelType": "procedural",
+        "baseColor": "#64748b",
+        "metalness": 0.7,
+        "roughness": 0.3,
+        "scale": 0.8,
+        "components": [
+          {
+            "name": "base",
+            "geometry": "box",
+            "dimensions": [2, 0.7, 1.6],
+            "position": [0, 0.4, 0]
+          },
+          {
+            "name": "mainBody",
+            "geometry": "box",
+            "dimensions": [1.6, 1.4, 1.3],
+            "position": [0, 1.3, 0],
+            "color": "#475569"
+          },
+          {
+            "name": "spindle",
+            "geometry": "cylinder",
+            "dimensions": { "radiusTop": 0.2, "radiusBottom": 0.2, "height": 0.8 },
+            "position": [0, 1.6, 0.5],
+            "color": "#94a3b8",
+            "animated": true
+          },
+          {
+            "name": "controlPanel",
+            "geometry": "box",
+            "dimensions": [0.4, 0.5, 0.15],
+            "position": [0.7, 1.6, -0.4],
+            "color": "#1e293b"
+          }
+        ],
+        "animations": {
+          "operating": {
+            "type": "rotation",
+            "target": "spindle",
+            "axis": "y",
+            "speed": 2
+          }
+        }
+      },
+      "industrial": {
+        "modelType": "procedural",
+        "baseColor": "#475569",
+        "components": [
+          {
+            "name": "frame",
+            "geometry": "box",
+            "dimensions": [3, 2, 1.5],
+            "position": [0, 1, 0]
+          },
+          {
+            "name": "conveyor",
+            "geometry": "box",
+            "dimensions": [1.2, 0.15, 5],
+            "position": [0, 0.4, 0],
+            "color": "#1e293b"
+          }
+        ]
+      }
+    },
+    "facilityLayouts": {
+      "workshop": {
+        "floorSize": 35,
+        "floorColor": "#1e293b",
+        "gridColor": "#334155",
+        "corridorSpacing": 7,
+        "corridorWidth": 6,
+        "corridorDepth": 24,
+        "elements": {
+          "workbenches": {
+            "positions": [[-10, 0.6, -10], [0, 0.6, -10], [10, 0.6, -10]],
+            "dimensions": [2.5, 1, 1.3],
+            "color": "#8b4513"
+          }
+        },
+        "safetyMarkers": {
+          "positions": [-10, -5, 0, 5, 10],
+          "offset": 2.8,
+          "color": "#fbbf24",
+          "emissiveIntensity": 0.8
+        }
+      },
+      "factory": {
+        "floorSize": 35,
+        "floorColor": "#1e293b",
+        "elements": {
+          "assemblyLines": {
+            "count": 3,
+            "positions": [[-10, 0, 0], [0, 0, 0], [10, 0, 0]],
+            "length": 14
+          },
+          "qualityControl": {
+            "positions": [[-10, 0, 10], [0, 0, 10], [10, 0, 10]]
+          }
+        }
+      },
+      "warehouse": {
+        "floorSize": 40,
+        "floorColor": "#1e293b",
+        "elements": {
+          "storageRacks": {
+            "gridX": [-14, -6, 6, 14],
+            "gridZ": [-12, 0, 12],
+            "withPallets": true
+          },
+          "forklifts": [
+            { "position": [-10, 0, -6], "rotation": 0, "color": "#2563eb", "moving": true },
+            { "position": [10, 0, 6], "rotation": 3.14159, "color": "#10b981", "moving": true },
+            { "position": [0, 0, -10], "rotation": 1.5708, "color": "#f59e0b", "moving": false }
+          ],
+          "overheadCrane": {
+            "position": [0, 0, 0],
+            "moving": true
+          }
+        }
+      }
+    },
+    "analysisResults": {
+      "machineHealth": {
+        "algorithm": "predictive-maintenance-v2",
+        "confidence": 0.94,
+        "factors": [
+          { "name": "vibration_pattern", "weight": 0.35, "status": "normal" },
+          { "name": "temperature_trend", "weight": 0.25, "status": "normal" },
+          { "name": "runtime_hours", "weight": 0.2, "status": "attention" },
+          { "name": "maintenance_history", "weight": 0.2, "status": "normal" }
+        ]
+      },
+      "anomalyDetection": {
+        "enabled": true,
+        "sensitivity": 0.85,
+        "alertThreshold": 0.7
+      },
+      "recommendations": {
+        "model": "maintenance-advisor-v1",
+        "maxRecommendations": 5,
+        "priorityWeights": {
+          "safety": 1.0,
+          "efficiency": 0.8,
+          "cost": 0.6
+        }
+      }
+    },
+    "renderingPresets": {
+      "highQuality": {
+        "shadows": true,
+        "antialias": true,
+        "pixelRatio": 2,
+        "toneMapping": "ACESFilmic"
+      },
+      "balanced": {
+        "shadows": true,
+        "antialias": true,
+        "pixelRatio": 1.5,
+        "toneMapping": "Reinhard"
+      },
+      "performance": {
+        "shadows": false,
+        "antialias": false,
+        "pixelRatio": 1,
+        "toneMapping": "Linear"
+      }
+    }
+  },
+  "partsVendors": [
+    {
+      "id": "vendor-1",
+      "name": "AutoPeças Premium",
+      "rating": 4.8,
+      "reviews": 156,
+      "distance": 2.3,
+      "travelTime": 8,
+      "status": "open",
+      "isTop": true,
+      "coordinates": { "lat": -23.5505, "lng": -46.6333 }
+    },
+    {
+      "id": "vendor-2",
+      "name": "Oficina Central Peças",
+      "rating": 4.9,
+      "reviews": 203,
+      "distance": 4.1,
+      "travelTime": 15,
+      "status": "open",
+      "isTop": false,
+      "coordinates": { "lat": -23.5589, "lng": -46.6481 }
+    },
+    {
+      "id": "vendor-3",
+      "name": "Industrial Parts Express",
+      "rating": 4.6,
+      "reviews": 89,
+      "distance": 5.8,
+      "travelTime": 22,
+      "status": "open",
+      "isTop": false,
+      "coordinates": { "lat": -23.5629, "lng": -46.6544 }
+    },
+    {
+      "id": "vendor-4",
+      "name": "Distribuidora Técnica",
+      "rating": 4.5,
+      "reviews": 124,
+      "distance": 7.2,
+      "travelTime": 28,
+      "status": "closed",
+      "isTop": false,
+      "coordinates": { "lat": -23.5453, "lng": -46.6297 }
+    }
+  ]
+}

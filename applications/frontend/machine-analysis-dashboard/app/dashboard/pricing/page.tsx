@@ -13,6 +13,7 @@ import cn from "classnames"
 export default function PricingPage() {
   const router = useRouter()
   const { theme } = useTheme()
+  const [currentPlan, setCurrentPlan] = useState<string>("professional") // This would come from API/context
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly")
 
@@ -91,9 +92,8 @@ export default function PricingPage() {
 
   const handleSelectPlan = (planId: string) => {
     setSelectedPlan(planId)
-    setTimeout(() => {
-      router.push("/dashboard")
-    }, 1000)
+    // Navigate to payment page with selected plan
+    router.push(`/dashboard/payment?plan=${planId}&billing=${billingCycle}`)
   }
 
   const getPrice = (plan: typeof plans[0]) => {
@@ -263,17 +263,17 @@ export default function PricingPage() {
 
                 <Button
                   onClick={() => handleSelectPlan(plan.id)}
-                  disabled={selectedPlan === plan.id}
+                  disabled={currentPlan === plan.id}
                   className={cn(
                     "w-full h-12 font-semibold text-base transition-all",
-                    isPopular
+                    currentPlan === plan.id
+                      ? "bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 cursor-not-allowed"
+                      : isPopular
                       ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg"
-                      : selectedPlan === plan.id
-                      ? "bg-green-500 hover:bg-green-600 text-white"
                       : "bg-blue-600 hover:bg-blue-700 text-white"
                   )}
                 >
-                  {selectedPlan === plan.id ? "Plano Selecionado ✓" : "Escolher Plano"}
+                  {currentPlan === plan.id ? "Plano Atual ✓" : "Escolher Plano"}
                 </Button>
               </div>
             </Card>

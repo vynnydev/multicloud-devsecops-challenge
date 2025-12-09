@@ -126,7 +126,7 @@ export default function WorkflowsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Automatizar Fluxos</h1>
+          <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600">Automatizar Fluxos</h1>
           <p className="text-muted-foreground mt-2">
             Gerencie automações e fluxos de trabalho da sua operação
           </p>

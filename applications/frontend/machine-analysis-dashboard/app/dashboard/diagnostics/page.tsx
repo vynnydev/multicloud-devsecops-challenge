@@ -208,7 +208,7 @@ export default function DiagnosticsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Diagnósticos e Atividades</h1>
+        <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600">Diagnósticos e Atividades</h1>
         <p className="text-muted-foreground mt-1">Acompanhe as atividades mensais e o diagnóstico dos equipamentos</p>
       </div>
 

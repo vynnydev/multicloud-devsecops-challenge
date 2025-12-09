@@ -9,7 +9,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Search, ArrowUp, ArrowDown, CornerDownLeft, X, ListChecks, LayoutDashboard, Activity, Wrench, Truck, Workflow, Package, BarChart3, CreditCard, Settings, Sparkles, Eye, Clock, AlertCircle, CheckCircle, Gauge, Cpu, Zap, DollarSign, ShoppingCart, TrendingUp, FileText, Calendar, Crown } from 'lucide-react'
+import { Search, ArrowUp, ArrowDown, CornerDownLeft, X, ListChecks, LayoutDashboard, Activity, Wrench, Truck, Workflow, Package, BarChart3, CreditCard, Settings, Sparkles, Eye, Clock, AlertCircle, CheckCircle, Gauge, Cpu, Zap, DollarSign, ShoppingCart, TrendingUp, FileText, Calendar, Crown, Users, Award, BarChart, UserPlus } from 'lucide-react'
 import { cn } from "@/lib/utils"
 
 interface SearchItem {
@@ -45,6 +45,12 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
     { id: "analysis-3d", title: "Visualização 3D", description: "Explore modelos 3D interativos das máquinas", category: "Análise", page: "Análise de Máquinas", href: "/dashboard/analysis", icon: Cpu, keywords: ["3d", "visualização", "modelo", "interativo"] },
     { id: "analysis-parts", title: "Peças Disponíveis", description: "Consulte estoque de peças e componentes", category: "Análise", page: "Análise de Máquinas", href: "/dashboard/analysis", icon: Package, keywords: ["peças", "componentes", "estoque", "disponível"] },
     { id: "analysis-ai-price", title: "Verificar Preços com IA", description: "Consulte preços e fornecedores com IA", category: "Análise", page: "Análise de Máquinas", href: "/dashboard/analysis", icon: Sparkles, keywords: ["preço", "fornecedor", "ia", "compra"] },
+    
+    // Relatórios
+    { id: "reports-main", title: "Relatórios de Máquinas", description: "Acesse relatórios detalhados de análises", category: "Relatórios", page: "Relatórios", href: "/dashboard/reports", icon: FileText, keywords: ["relatórios", "reports", "análises", "histórico", "documentos"] },
+    { id: "reports-history", title: "Histórico de Relatórios", description: "Visualize relatórios anteriores", category: "Relatórios", page: "Relatórios", href: "/dashboard/reports", icon: Clock, keywords: ["histórico", "anterior", "passado", "arquivado"] },
+    { id: "reports-ai", title: "Relatórios com IA", description: "Relatórios gerados com inteligência artificial", category: "Relatórios", page: "Relatórios", href: "/dashboard/reports", icon: Sparkles, keywords: ["ia", "inteligência", "artificial", "automático"] },
+    { id: "reports-print", title: "Imprimir Relatório", description: "Gere relatórios em PDF para impressão", category: "Relatórios", page: "Relatórios", href: "/dashboard/reports", icon: FileText, keywords: ["imprimir", "pdf", "exportar", "download"] },
     
     // Monitoramento
     { id: "monitoring-main", title: "Monitoramento", description: "Painel de monitoramento em tempo real", category: "Monitoramento", page: "Monitoramento", href: "/dashboard/monitoring", icon: Activity, keywords: ["monitoramento", "tempo real", "dashboard", "métricas"] },
@@ -91,12 +97,23 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
     { id: "settings-main", title: "Configurações", description: "Configure sua conta e preferências", category: "Sistema", page: "Configurações", href: "/dashboard/settings", icon: Settings, keywords: ["configurações", "settings", "preferências", "conta"] },
     { id: "settings-profile", title: "Meu Perfil", description: "Edite informações do perfil", category: "Sistema", page: "Configurações", href: "/dashboard/settings", icon: Settings, keywords: ["perfil", "usuário", "dados", "editar"] },
     { id: "settings-notifications", title: "Notificações", description: "Configure alertas e notificações", category: "Sistema", page: "Configurações", href: "/dashboard/settings", icon: Activity, keywords: ["notificações", "alertas", "avisos", "email"] },
+    
+    // Equipe & Usuários
+    { id: "team-dashboard", title: "Dashboard de Equipe", description: "Métricas e performance da equipe com insights de IA", category: "Equipe", page: "Equipe", href: "/dashboard/team", icon: Users, keywords: ["equipe", "time", "team", "funcionários", "colaboradores", "métricas", "performance"] },
+    { id: "team-members", title: "Membros da Equipe", description: "Visualize distribuição e estatísticas de membros", category: "Equipe", page: "Equipe", href: "/dashboard/team", icon: Users, keywords: ["membros", "funcionários", "técnicos", "engenheiros", "operadores"] },
+    { id: "team-attendance", title: "Relatório de Presença", description: "Acompanhe presença e pontualidade da equipe", category: "Equipe", page: "Equipe", href: "/dashboard/team", icon: Calendar, keywords: ["presença", "attendance", "ponto", "horário", "pontualidade"] },
+    { id: "team-salary", title: "Salário Total", description: "Visualize custos com folha de pagamento", category: "Equipe", page: "Equipe", href: "/dashboard/team", icon: DollarSign, keywords: ["salário", "pagamento", "folha", "custos", "despesas"] },
+    { id: "team-ai-insights", title: "Insights de IA da Equipe", description: "Análises preditivas sobre performance da equipe", category: "Equipe", page: "Equipe", href: "/dashboard/team", icon: Sparkles, keywords: ["ia", "insights", "análise", "preditiva", "inteligência"] },
+    { id: "users-management", title: "Gerenciar Usuários", description: "Adicione, edite e gerencie usuários do sistema", category: "Equipe", page: "Usuários", href: "/dashboard/users", icon: UserPlus, keywords: ["usuários", "users", "gerenciar", "adicionar", "permissões", "roles"] },
+    { id: "users-roles", title: "Funções e Permissões", description: "Configure funções e permissões de usuários", category: "Equipe", page: "Usuários", href: "/dashboard/users", icon: Award, keywords: ["funções", "roles", "permissões", "acesso", "admin", "manager"] },
   ]
 
   const categories = [
     { id: "all", name: "Todos", icon: LayoutDashboard },
     { id: "Tarefas", name: "Tarefas", icon: ListChecks },
     { id: "Análise", name: "Análise", icon: LayoutDashboard },
+    { id: "Relatórios", name: "Relatórios", icon: FileText },
+    { id: "Equipe", name: "Equipe", icon: Users },
     { id: "Monitoramento", name: "Monitoramento", icon: Activity },
     { id: "Oficina", name: "Oficina", icon: Wrench },
     { id: "Logística", name: "Logística", icon: Truck },

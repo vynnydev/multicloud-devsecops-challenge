@@ -15,6 +15,7 @@ import { User, Mail, Phone, MapPin, Building2, Shield, Bell, Palette, Globe, Cre
 import { useTheme } from "@/contexts/theme-context"
 import cn from "classnames"
 import { useRouter } from 'next/navigation'
+import { AccountSwitcher } from "@/components/account-switcher"
 
 export default function SettingsPage() {
   const { theme } = useTheme()
@@ -26,7 +27,7 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Preferências do Usuário</h1>
+        <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600">Preferências do Usuário</h1>
         <p className="text-muted-foreground mt-1">Gerencie suas informações pessoais e configurações da conta</p>
       </div>
 
@@ -161,6 +162,16 @@ export default function SettingsPage() {
               <CardDescription>Detalhes sobre sua conta e assinatura</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+              <div className="mb-6">
+                <Label className="text-sm font-medium mb-2 block">Contas Disponíveis</Label>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Alterne entre diferentes contas com diferentes níveis de acesso
+                </p>
+                <AccountSwitcher />
+              </div>
+
+              <Separator />
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div
                   className={cn(

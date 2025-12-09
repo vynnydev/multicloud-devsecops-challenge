@@ -1,13 +1,20 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { ThemeProvider } from "@/contexts/theme-context"
 import { AuthProvider } from "@/contexts/auth-context"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-sans"
+})
+
+const jetbrainsMono = JetBrains_Mono({ 
+  subsets: ["latin"],
+  variable: "--font-mono"
+})
 
 export const metadata: Metadata = {
   title: "Cognitiva Analytics - Análise Preditiva de Equipamentos",
@@ -40,7 +47,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-sans antialiased`} suppressHydrationWarning>
+      <body 
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`} 
+        suppressHydrationWarning
+      >
         <AuthProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </AuthProvider>

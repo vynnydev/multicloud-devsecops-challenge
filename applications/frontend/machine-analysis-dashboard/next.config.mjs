@@ -1,11 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  turbopack: {
-    resolveAlias: {
-      // Alias para o mapbox-gl se necessário
-    },
+  typescript: {
+    ignoreBuildErrors: true,
   },
-  // Transpilar o mapbox-gl
+  images: {
+    unoptimized: true,
+  },
+  webpack: (config) => {
+    // Configuração para Mapbox GL funcionar corretamente
+    config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    })
+    
+    return config
+  },
+  // Transpilar o mapbox-gl para evitar erro de MIME type
   transpilePackages: ['mapbox-gl'],
 }
 

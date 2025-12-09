@@ -241,7 +241,7 @@ export default function TransportPage() {
       <div className="flex items-center justify-between p-4 bg-background border-b">
         <div className="flex items-center gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">Transporte & Reboque</h1>
+            <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600">Transporte & Reboque</h1>
             <p className="text-sm text-muted-foreground">
               {filteredRequests.length} solicitações
             </p>

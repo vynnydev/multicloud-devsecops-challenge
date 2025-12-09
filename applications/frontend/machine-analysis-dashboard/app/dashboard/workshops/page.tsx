@@ -11,6 +11,7 @@ import { useTheme } from "@/contexts/theme-context"
 import cn from "classnames"
 import { Separator } from "@/components/ui/separator"
 import { Machine3DViewer } from "@/components/machine-3d-viewer"
+import { PartsLocationFinder } from "@/components/parts-location-finder"
 
 interface MachinePart {
   id: string
@@ -237,6 +238,8 @@ export default function WorkshopsPage() {
   const [selectedMachine, setSelectedMachine] = useState<Machine | null>(null)
   const [selectedPart, setSelectedPart] = useState<MachinePart | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
+  const [isLocationFinderOpen, setIsLocationFinderOpen] = useState(false)
+  const [selectedPartForLocation, setSelectedPartForLocation] = useState<MachinePart | null>(null)
 
   const getStatusColor = (status: string) => {
     const colors = {
@@ -275,10 +278,10 @@ export default function WorkshopsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Oficina Virtual</h1>
+          <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600">Oficina Virtual</h1>
           <p className="text-muted-foreground mt-1">Visualize suas máquinas e peças em 3D interativo</p>
         </div>
-        <Button className="gap-2">
+        <Button className="gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
           <Plus className="h-4 w-4" />
           Adicionar Oficina
         </Button>
@@ -615,7 +618,8 @@ export default function WorkshopsPage() {
                                     className="h-7 gap-1.5 px-2 text-purple-600 hover:text-white relative overflow-hidden group"
                                     onClick={(e) => {
                                       e.stopPropagation()
-                                      alert(`Consultando IA para preços e locais de compra de ${part.name}...`)
+                                      setSelectedPartForLocation(part)
+                                      setIsLocationFinderOpen(true)
                                     }}
                                   >
                                     <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -648,6 +652,19 @@ export default function WorkshopsPage() {
           </Card>
         </div>
       </div>
+
+      {/* PartsLocationFinder modal */}
+      {selectedPartForLocation && (
+        <PartsLocationFinder
+          isOpen={isLocationFinderOpen}
+          onClose={() => {
+            setIsLocationFinderOpen(false)
+            setSelectedPartForLocation(null)
+          }}
+          partName={selectedPartForLocation.name}
+          partImage={selectedPartForLocation.image}
+        />
+      )}
     </div>
   )
 }
