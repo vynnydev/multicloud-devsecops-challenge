@@ -24,6 +24,7 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { AccountSwitcher } from "@/components/account-switcher"
+import { useAuth } from "@/contexts/auth-context"
 
 interface DashboardSidebarProps {
   sidebarOpen: boolean
@@ -34,6 +35,7 @@ interface DashboardSidebarProps {
 export function DashboardSidebar({ sidebarOpen, setSidebarOpen, forceCollapsed }: DashboardSidebarProps) {
   const pathname = usePathname()
   const [collapsed, setCollapsed] = useState(false)
+  const { logout } = useAuth()
 
   useEffect(() => {
     if (forceCollapsed !== undefined) {
@@ -105,7 +107,7 @@ export function DashboardSidebar({ sidebarOpen, setSidebarOpen, forceCollapsed }
   ]
 
   const handleLogout = () => {
-    console.log("[v0] Logout clicked (auth disabled for development)")
+    logout()
   }
 
   return (
@@ -137,7 +139,7 @@ export function DashboardSidebar({ sidebarOpen, setSidebarOpen, forceCollapsed }
               <Button
                 variant="ghost"
                 size="sm"
-                className="hidden lg:flex w-full text-blue-200 hover:text-white hover:bg-blue-700 justify-start gap-2"
+                className="hidden lg:flex w-full text-blue-200 hover:text-white hover:bg-blue-700/50 dark:hover:bg-blue-800/50 justify-start gap-2"
                 onClick={() => setCollapsed(!collapsed)}
               >
                 <ChevronLeft className="h-4 w-4" />
@@ -152,7 +154,7 @@ export function DashboardSidebar({ sidebarOpen, setSidebarOpen, forceCollapsed }
               <Button
                 variant="ghost"
                 size="icon"
-                className="hidden lg:flex text-blue-200 hover:text-white hover:bg-blue-700"
+                className="hidden lg:flex text-blue-200 hover:text-white hover:bg-blue-700/50 dark:hover:bg-blue-800/50"
                 onClick={() => setCollapsed(!collapsed)}
                 title="Expandir menu"
               >

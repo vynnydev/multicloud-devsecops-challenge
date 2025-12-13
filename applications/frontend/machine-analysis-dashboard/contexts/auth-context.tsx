@@ -10,8 +10,12 @@ interface User {
   username: string
   email: string
   name: string
+  role?: string
   location_id: string
   email_verified: boolean
+  avatar?: string
+  department?: string
+  phone?: string
 }
 
 interface AuthTokens {
@@ -69,7 +73,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
       localStorage.setItem("auth_tokens", JSON.stringify(tokens))
 
-      router.push("/dashboard")
+      router.push("/dashboard/workspace")
     } catch (error) {
       console.error("[v0] Login failed:", error)
       throw error
